@@ -21,7 +21,6 @@ class ProductsController extends Controller
         $user = Auth::user();
         $restaurant = $user->restaurant;
         $products = $restaurant->products()->get();
-        dd($products);
 
         return view('admin.products.index', compact('products'));
 
