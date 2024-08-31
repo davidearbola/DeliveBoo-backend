@@ -96,6 +96,8 @@
             @yield('content')
         </main>
     </div>
+
+    @yield("pageScript")
 </body>
 
 </html>
