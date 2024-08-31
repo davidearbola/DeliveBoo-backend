@@ -4,23 +4,23 @@
 @endsection
 
 @section('content')
-<div class="container mt-4 ">
+<div class="container mt-4">
     <div class="row row-cols-2 rounded form_container">
 
         <!-- VIDEO SECTION  -->
         <div class="video_Section p-0">
             <video muted="" autoplay="" loop=""
-            src="{{asset('videos/VideoJumbo_by_DaríoIdoate.mp4')}}" type="video/mp4" class="rounded">
+            src="{{asset('videos/Login_Food Reel FH Studio.mp4')}}" type="video/mp4" class="rounded-start myVideo">
             <img src={{asset('videos/errorVideo.png')}} alt="Error Video">
             </video>
         </div>
 
         <!-- FORM SECTION  -->
-        <div class="justify-content-center rounded form_section_container">
+        <div class="justify-content-center rounded-end form_section_container">
             <div class="card bg-transparent form_card">
 
                 <div class="card-header form_header">
-                    <img src="{{asset('images/DeliveBoo.png')}}" class="my_logo">
+                    <img src="{{asset('images/DeliveBoo-Photoroom.png')}}" class="my_logo">
                 </div>
 
                 <div class="card-body">
@@ -71,7 +71,7 @@
                         <!-- Pulsanti Login / ForgotPassw -->
                         <div class="mb-2 row mb-0">
                             <div class="col-md-7 offset-md-5">
-                                <button type="submit" class="btn btn-primary myLogin_button">
+                                <button type="submit" class="btn btn-primary myLogin_Register_button">
                                     {{ __('Login') }}
                                 </button>
                             </div>
@@ -144,8 +144,8 @@
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-primary myLogin_Register_button">
+                                    {{ __('Registrati') }}
                                 </button>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
 
                     <hr>
 
-                    {{-- TASTO REGISTRATI --}}
+                    {{-- TASTO LOGIN/REGISTRATI --}}
                     <div class="mb-4 row mb-0">
                         <div class="col-md-8 offset-md-4">
                             <button type="submit" class="btn btn-primary myRegister_button">{{ __('Registra il tuo ristorante') }}
