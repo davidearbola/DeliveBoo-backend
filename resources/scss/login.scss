@@ -1,0 +1,39 @@
+.form_container{
+    background-color: rgba(56,102,64,255);
+    height: 80vh;
+    box-shadow: 0px 0px 10px 2px rgb(48, 47, 47);
+}
+
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.form_container{
+    color: white;
+}
+
+.form_section_container{
+
+}
+.form_card{
+    border: unset !important;
+    color: white !important;
+}
+.form_header{
+    border: unset !important;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.my_logo{
+    width: 50%;
+}
+
+.myLogin_button{
+    background-color: white !important;
+    color: black !important;
+}
+.my_forgotPsw{
+    color: white !important;
+}
