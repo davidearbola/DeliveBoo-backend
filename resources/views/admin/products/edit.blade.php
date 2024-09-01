@@ -77,20 +77,7 @@
 
 
                             {{-- ////////////////////////////////////////////////// --}}
-                            {{-- <div class="form-step">
-                                <div class="form-group mb-3 form-check">
-                                    <input type="hidden" name="visible" value="0">
-                                    <input type="checkbox" class="form-check-input @error('visible') is-invalid @enderror"
-                                        id="visible" name="visible"
-                                        value="1" {{ old('visible', $product->visible) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="visible">Prodotto disponibile</label>
-                                    @error('visible')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div> --}}
+
                             {{-- ////////////////////////////////////////////////// --}}
 
                             <!-- Step 5: Type -->
