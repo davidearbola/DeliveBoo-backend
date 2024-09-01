@@ -82,9 +82,10 @@ class ProductsController extends Controller
     {
         $user = Auth::user();
         $restaurant = $user->restaurant;
-        // $product = Product::where('restaurant_id', $restaurant->id)->findOrFail($id);
-        // $product = Product::where('restaurant_id', $restaurant->id)->findOrFail($id);
-        $product = Product::find(1);
+        
+        $product = Product::where('restaurant_id', $restaurant->id)->find($id);
+        
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
