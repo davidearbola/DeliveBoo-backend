@@ -106,10 +106,11 @@
                             <!-- Step 6: Image Upload -->
                             <div class="form-step">
                                 <div class="form-group mb-3">
-                                    <label for="image">Aggiungi un immagine del prodotto</label>
-                                    <input type="file" class="form-control-file @error('image') is-invalid @enderror"
-                                        id="image" name="image" required>
-                                    @error('image')
+                                    <label for="image_path">Aggiungi un immagine del prodotto</label>
+                                    <input type="file"
+                                        class="form-control-file @error('image_path') is-invalid @enderror" id="image_path"
+                                        name="image_path" required>
+                                    @error('image_path')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -185,7 +186,7 @@
                 <li><strong>Price:</strong> ${formattedPrice}</li>
                 <li><strong>Disponibilità:</strong> ${document.getElementById('visible').checked ? 'Yes' : 'No'}</li>
                 <li><strong>Tipologia:</strong> ${document.getElementById('type').value}</li>
-                <li><strong>Immagine prodotto:</strong> ${document.getElementById('image').value.split('\\').pop()}</li>
+                <li><strong>Immagine prodotto:</strong> ${document.getElementById('image_path').value.split('\\').pop()}</li>
             `;
                 priceField.value = formattedPrice;
             }
