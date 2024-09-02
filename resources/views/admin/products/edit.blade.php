@@ -111,18 +111,20 @@
                             <!-- Step 6: Image Upload -->
                             <div class="form-step">
                                 <div class="form-group mb-3">
-                                    <label for="image">Immagine del prodotto</label>
-                                    <input type="file" class="form-control-file @error('image') is-invalid @enderror"
-                                        id="image" name="image">
+                                    <label for="image_path">Immagine del prodotto</label>
+                                    <input type="file"
+                                        class="form-control-file @error('image_path') is-invalid @enderror" id="image_path"
+                                        name="image_path">
                                     <small class="form-text text-muted">Immagine attuale:
                                         {{ basename($product->image_path) }}</small>
-                                    @error('image')
+                                    @error('image_path')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
 
+                                
                             </div>
 
                             <!-- Step 7: Review & Submit -->
