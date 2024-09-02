@@ -22,20 +22,18 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>"required|min:3|max:30",
-            "ingredients"=>"nullable|string|max:255|",
-            "price"=>"required|numeric|gt:-0.01|lt:10000|decimal:2",
-            "visible"=>"boolean",
-            "type"=>"string|required|in:Food,Bibite,Bevande Alcoliche,Dessert",
-            "image_path" =>"required|image"
-           ];
+            "name" => "required|min:3|max:30",
+            "ingredients" => "nullable|string|max:255|",
+            "price" => "required|numeric|gt:-0.01|lt:10000|decimal:2",
+            "visible" => "boolean",
+            "type" => "string|required|in:Food,Bibite,Bevande Alcoliche,Dessert",
+            "image_path" => "required|image"
+        ];
     }
-
-    protected function prepareForValidation(){
-
+    protected function prepareForValidation()
+    {
         $this->merge([
-            "visible"=> $this->has("visible") ? true : false
+            'visible' => $this->has('visible') ? true : false,
         ]);
-
     }
 }
