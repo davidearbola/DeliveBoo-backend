@@ -111,12 +111,13 @@
                             <!-- Step 6: Image Upload -->
                             <div class="form-step">
                                 <div class="form-group mb-3">
-                                    <label for="image">Immagine del prodotto</label>
-                                    <input type="file" class="form-control-file @error('image') is-invalid @enderror"
-                                        id="image" name="image">
+                                    <label for="image_path">Immagine del prodotto</label>
+                                    <input type="file"
+                                        class="form-control-file @error('image_path') is-invalid @enderror" id="image_path"
+                                        name="image_path">
                                     <small class="form-text text-muted">Immagine attuale:
                                         {{ basename($product->image_path) }}</small>
-                                    @error('image')
+                                    @error('image_path')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -141,25 +142,7 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const reviewList = document.getElementById('reviewList');
-
-
-            function populateReview() {
-                const priceField = document.getElementById('price');
-                let formattedPrice = parseFloat(priceField.value).toFixed(2);
-                reviewList.innerHTML = `
-                  <li><strong>Nome prodotto:</strong> ${document.getElementById('name').value}</li>
-                  <li><strong>Ingredienti:</strong> ${document.getElementById('ingredients').value}</li>
-                  <li><strong>Prezzo:</strong> ${formattedPrice}</li>
-                  <li><strong>Disponibilità:</strong> ${document.getElementById('visible').checked ? 'Sì' : 'No'}</li>
-                  <li><strong>Tipologia:</strong> ${document.getElementById('type').value}</li>
-                  <li><strong>Immagine prodotto:</strong> ${document.getElementById('image').value ? document.getElementById('image').value.split('\\').pop() : 'Mantieni l\'immagine attuale'}</li>
-            = `;
-                priceField.value = formattedPrice;
-            }
-        });
+        // palceholder
     </script>
 
     <style scoped>

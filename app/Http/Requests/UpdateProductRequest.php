@@ -30,4 +30,12 @@ class UpdateProductRequest extends FormRequest
             "image_path" =>"required|image"
            ];
     }
+
+    protected function prepareForValidation(){
+
+        $this->merge([
+            "visible"=> $this->has("visible") ? true : false
+        ]);
+
+    }
 }
