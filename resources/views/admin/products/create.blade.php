@@ -107,9 +107,8 @@
                             <div class="form-step">
                                 <div class="form-group mb-3">
                                     <label for="image_path">Aggiungi un immagine del prodotto</label>
-                                    <input type="file"
-                                        class="form-control-file @error('image_path') is-invalid @enderror" id="image_path"
-                                        name="image_path" required>
+                                    <input type="file" class="form-control-file @error('image_path') is-invalid @enderror"
+                                        id="image_path" name="image_path" required>
                                     @error('image_path')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

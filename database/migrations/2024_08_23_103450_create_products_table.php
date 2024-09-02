@@ -20,8 +20,14 @@ return new class extends Migration
             $table->foreignId('restaurant_id')->constrained('restaurants')->onDelete('cascade');
             $table->enum('type', ['Food', 'Bibite', 'Bevande Alcoliche', 'Dessert']);
             $table->string('image_path');
+<<<<<<< HEAD
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+=======
+
+            $table->timestamp('created_at')->nullable();
+            $table->string('updated_at')->nullable();
+>>>>>>> branch-di-vladi
         });
     }
 

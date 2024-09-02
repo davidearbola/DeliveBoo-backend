@@ -36,4 +36,12 @@ class UpdateProductRequest extends FormRequest
             'visible' => $this->has('visible') ? true : false,
         ]);
     }
+
+    protected function prepareForValidation(){
+
+        $this->merge([
+            "visible"=> $this->has("visible") ? true : false
+        ]);
+
+    }
 }
