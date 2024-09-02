@@ -1,4 +1,7 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
+_________________________________________________________
+INUTILE DATO CHE E' STATO ACCORPATO AL LOGIN.BLADE.PHP
+______________________________________________________________
 
 @section('content')
 <div class="container mt-4">
@@ -74,4 +77,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

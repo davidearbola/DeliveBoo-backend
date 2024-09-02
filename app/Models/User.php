@@ -20,12 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'password',
-        'restaurant_id'
     ];
 
     public function restaurant()
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->hasOne(Restaurant::class);
     }
 
     /**
