@@ -27,7 +27,7 @@ class UpdateProductRequest extends FormRequest
             "price" => "required|numeric|gt:-0.01|lt:10000|decimal:2",
             "visible" => "boolean",
             "type" => "string|required|in:Food,Bibite,Bevande Alcoliche,Dessert",
-            "image_path" => "required|image"
+            "image_path" => "image"
         ];
     }
     protected function prepareForValidation()
