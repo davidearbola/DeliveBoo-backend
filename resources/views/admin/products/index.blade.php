@@ -4,55 +4,58 @@
 @endsection
 
 @section('content')
-    <h1 class="my-2 red">LISTA PRODOTTI</h1>
+<div style="max-width: 1400px">
+
+    <h1 class="my-3 text-center">LISTA PRODOTTI</h1>
 
     <div class="table-responsive">
         <table class="table table-success text-center align-middle">
+
             <thead>
                 <tr>
-                    <th scope="col" class="text-start" style="width:10%">NOME</th>
-                    <th scope="col" style="width:10%">TIPOLOGIA</th>
-                    <th scope="col" style="width:10%">PREZZO</th>
-                    <th scope="col" style="width:10%">IMMAGINE</th>
-                    <th scope="col" style="width:10%">DISPONIBILITA'</th>
-                    <th scope="col" style="width:15%">INFO</th>
-                    <th scope="col" style="width:15%">MODIFICA</th>
-                    <th scope="col" style="width:15%">ELIMINA</th>
+                    <th scope="col" class="text-start">NOME</th>
+                    <th scope="col" class="hide-on-tablet">TIPOLOGIA</th>
+                    <th scope="col" class="hide-on-tablet">PREZZO</th>
+                    <th scope="col" class="hide-on-mobile" style="max-width:80px">IMMAGINE</th>
+                    <th scope="col" class="hide-on-mobile">DISPONIBILITA'</th>
+                    <th scope="col">AZIONI</th>
                 </tr>
             </thead>
+
             <tbody>
                 @forelse ($products as $singleProduct)
                 <tr>
                     <td class="text-start">{{$singleProduct->name}}</td>
-                    <td>{{$singleProduct->type}}</td>
-                    <td>{{$singleProduct->price}}€</td>
-                    <td>
+                    <td class="hide-on-tablet">{{$singleProduct->type}}</td>
+                    <td class="hide-on-tablet">{{$singleProduct->price}}€</td>
+
+                    <td class="hide-on-mobile" style="max-width:80px">
                         @if (Str::startsWith($singleProduct->image_path, 'http'))
-                        <img class="w-100" src="{{$singleProduct->image_path}}" style="max-height: 50px; object-fit: cover;">
+                        <img class="w-100" src="{{$singleProduct->image_path}}" style="height: 70px; max-width:60px object-fit: contain;">
                         @else
-                        <img class="w-100" src="{{ asset('storage/' . $singleProduct->image_path) }}" style="max-height: 50px; object-fit: cover;">
+                        <img class="w-100" src="{{ asset('storage/' . $singleProduct->image_path) }}" style="height: 70px; max-width:60px object-fit: contain;">
                         @endif
                     </td>
-                    <td>
+
+                    <td class="hide-on-mobile">
                         @if($singleProduct->visible == true)
                         <span class="text-success">Disponibile</span>
                         @else
                         <span class="text-danger">Non disponibile</span>
                         @endif
                     </td>
+
                     <td>
-                        <a href="{{ route('admin.products.show', $singleProduct) }}">
-                            <button class="btn btn-primary">Info</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ route('admin.products.edit', $singleProduct) }}">
-                            <button class="btn btn-warning">Modifica</button>
-                        </a>
-                    </td>
-                    <td>
+                        <button class="btn btn-info me-2">
+                            <a href="{{ route('admin.products.show', $singleProduct) }}" class="text-white"><i class="fa-solid fa-circle-info"></i></a>
+                        </button>
+
+                        <button class="btn btn-warning me-2">
+                            <a href="{{ route('admin.products.edit', $singleProduct) }}" class="text-white"><i class="fa-solid fa-pen"></i></a>
+                        </button>
+                   
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{ $singleProduct->id }}">
-                            Elimina
+                            <i class="fa-solid fa-trash"></i>
                         </button>
                     </td>
                 </tr>
@@ -89,7 +92,7 @@
                 </div>
     
                 @empty
-                <tr class="">
+                <tr>
                     <td scope="row" colspan="8">Non ci sono prodotti da visualizzare</td>
                 </tr>
                 @endforelse
@@ -97,7 +100,9 @@
         </table>
     </div>
 
-    {{$products->links('pagination::bootstrap-4')}}
-    
+    <div class="d-flex justify-content-center">
+         {{$products->links('pagination::bootstrap-4')}}
+    </div>
 
+</div>
 @endsection
