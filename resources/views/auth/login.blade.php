@@ -31,7 +31,7 @@
                         {{-- MAIL CUSTOM FORM --}}
                         <div class="mb-4 form_box">
                             {{-- Devo necessariamente inserire type text perchè se no non mi attiva bene la regola css "valid" qualora non metta una mail --}}
-                            <input id="email" type="text" class="custom_input @error('email') is-invalid @enderror" name="email" value=""  required autocomplete="email">
+                            <input id="email" type="text" class="custom_input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  required autocomplete="email">
                             <div class="form_label">{{ __('Indirizzo E-Mail') }}</div>
 
                             @error('email')
@@ -91,25 +91,25 @@
                     <form method="POST" action="{{ route('register') }}" class="d-none my_RegisterForm">
                         @csrf
 
+
+                        {{-- EMAIL CUSTOM FORM --}}
                         <div class="mb-4 form_box">
-                            {{-- Devo necessariamente inserire type text perchè se no non mi attiva bene la regola css "valid" qualora non metta una mail --}}
-                            <input id="email" type="text" class="custom_input @error('email') is-invalid @enderror" name="email" value=""  required autocomplete="email">
+                            <input id="register_email" type="text" class="custom_input @error('register_email') is-invalid @enderror" name="register_email" value="{{ old('register_email') }}" required autocomplete="email">
                             <div class="form_label">{{ __('Indirizzo E-Mail') }}</div>
 
-                            @error('email')
+                            @error('register_email')
                             <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
 
-
-                        {{-- PASSW CUSTOM FORM --}}
+                        {{-- PASSWORD CUSTOM FORM --}}
                         <div class="mb-4 form_box">
-                            <input id="password" type="password" class="custom_input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">                                                    
+                            <input id="register_password" type="password" class="custom_input @error('register_password') is-invalid @enderror" name="register_password" required autocomplete="new-password">                                                    
                             <div class="form_label">{{ __('Password') }}</div>
 
-                            @error('password')
+                            @error('register_password')
                             <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -117,11 +117,9 @@
                         </div>
 
                         <div class="mb-4 form_box">                      
-                            <input id="password-confirm" type="password" class="custom_input" name="password_confirmation" required autocomplete="new-password">
-                            <label for="password-confirm" class="form_label">{{ __('Confirm Password') }}</label>
+                            <input id="register_password-confirm" type="password" class="custom_input" name="register_password_confirmation" required autocomplete="new-password">
+                            <div class="form_label">{{ __('Conferma Password') }}</div>
                         </div>
-
-
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -138,7 +136,7 @@
                     {{-- TASTO LOGIN/REGISTRATI --}}
                     <div class="mb-4 row mb-0">
                         <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary mySwapLogin_Register_button">{{ __('Registra il tuo ristorante') }}
+                            <button type="button" class="btn btn-primary mySwapLogin_Register_button">{{ __('Registra il tuo ristorante') }}
                             </button>
                         </div>
                     </div>
@@ -150,9 +148,10 @@
 </div>
 @endsection
 
-
 @section("pageScript")
+    <script>
+        // Imposta la variabile globale basata sul flag di sessione
+        window.showRegistrationForm = @json(session('showRegistrationForm', false));
+    </script>
     <script src= @vite('resources/js/login_register.js')
 @endsection
-
-

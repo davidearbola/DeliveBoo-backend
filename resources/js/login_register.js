@@ -1,46 +1,45 @@
-const registerButton = document.querySelector('.mySwapLogin_Register_button');
-const videoSection = document.querySelector('.video_Section');
-const formSection = document.querySelector('.form_section_container');
+document.addEventListener('DOMContentLoaded', function() {
+  // Verifica se la sessione richiede di mostrare il form di registrazione
+  if (window.showRegistrationForm) {
+      // Esegui lo script per mostrare il form di registrazione
+      const registerButton = document.querySelector('.mySwapLogin_Register_button');
+      if (registerButton) {
+          registerButton.click();
+      }
+  }
+});
 
-const loginCardBody = document.querySelector('.my_LoginForm');
-const registerCardBody = document.querySelector('.my_RegisterForm');
+// Funzione per gestire lo swap tra il form di login e registrazione
+function swapOrder() {
+  const registerButton = document.querySelector('.mySwapLogin_Register_button');
+  const videoSection = document.querySelector('.video_Section');
+  const formSection = document.querySelector('.form_section_container');
+  const loginCardBody = document.querySelector('.my_LoginForm');
+  const registerCardBody = document.querySelector('.my_RegisterForm');
+  const myVideo = document.querySelector('.myVideo');
 
-const myVideo = document.querySelector('.myVideo');
+  if (registerButton) {
+      registerButton.addEventListener('click', () => {
+          videoSection.classList.toggle('order-2');
+          formSection.classList.toggle('order-1');
 
-const register_login_button = document.querySelector('.mySwapLogin_Register_button');
+          if (videoSection.classList.contains('order-2')) {
+              // Cambio visibilità e classi CSS
+              loginCardBody.classList.add('d-none');
+              registerCardBody.classList.remove('d-none');
+              myVideo.classList.replace("rounded-start", "rounded-end");
+              formSection.classList.replace("rounded-end", "rounded-start");
+              registerButton.innerHTML = "Vai al Login";
+          } else {
+              loginCardBody.classList.remove('d-none');
+              registerCardBody.classList.add('d-none');
+              myVideo.classList.replace("rounded-end", "rounded-start");
+              formSection.classList.replace("rounded-start", "rounded-end");
+              registerButton.innerHTML = "Registra il tuo ristorante";
+          }
+      });
+  }
+}
 
-
-// Evento per cui al click swappo dal login al register form, ritoccando anche qualche classe css
-  function swapOrder(){ registerButton.addEventListener('click', () => {
-    videoSection.classList.toggle('order-2');
-    formSection.classList.toggle('order-1');
-
-    if (videoSection.classList.contains('order-2')) {
-
-      //CAMBIO VISIBILITA'
-      loginCardBody.className = "d-none";
-      registerCardBody.className = "d-block";
-
-      //FIX DEI BORDER RADIUS ALLO SWAP DEGLI ORDER
-      myVideo.classList.remove("rounded-start");
-      myVideo.classList.add("rounded-end");
-      formSection.classList.remove("rounded-end");
-      formSection.classList.add("rounded-start");
-
-      //CAMBIO TESTO DEL BOTTONE
-      register_login_button.innerHTML="Vai al Login";
-    } 
-    else {
-      loginCardBody.className = "d-block";
-      registerCardBody.className = "d-none";
-
-      myVideo.classList.remove("rounded-end");
-      myVideo.classList.add("rounded-start");
-      formSection.classList.remove("rounded-start");
-      formSection.classList.add("rounded-end");
-      
-      register_login_button.innerHTML="Registra il tuo ristorante";
-    }
-  });
- }
- swapOrder();
+// Inizializza lo swap order
+swapOrder();

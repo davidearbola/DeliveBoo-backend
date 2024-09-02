@@ -30,22 +30,34 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        try {
+            // Validazione dei dati
+            $validatedData = $request->validate([
+                'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],  
+                'register_password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ]);
+            
+            // Creazione dell'utente
+            $user = User::create([
+                'email' => $validatedData['register_email'],
+                'password' => Hash::make($validatedData['register_password']),
+            ]);
+    
+            // Eventi e login automatico
+            event(new Registered($user));
+            Auth::login($user);
+    
+            // Redirect alla home dopo la registrazione
+            return redirect(RouteServiceProvider::HOME);
+        
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // In caso di errore di validazione, reindirizza indietro con un flag di sessione. Nel template blade del Login si inizializza 
+            return redirect()->back()
+                ->withErrors($e->validator)
+                ->withInput()
+                ->with('showRegistrationForm', true);
+        }
     }
+    
+    
 }
