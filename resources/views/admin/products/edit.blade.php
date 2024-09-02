@@ -143,25 +143,7 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const reviewList = document.getElementById('reviewList');
-
-
-            function populateReview() {
-                const priceField = document.getElementById('price');
-                let formattedPrice = parseFloat(priceField.value).toFixed(2);
-                reviewList.innerHTML = `
-                  <li><strong>Nome prodotto:</strong> ${document.getElementById('name').value}</li>
-                  <li><strong>Ingredienti:</strong> ${document.getElementById('ingredients').value}</li>
-                  <li><strong>Prezzo:</strong> ${formattedPrice}</li>
-                  <li><strong>Disponibilità:</strong> ${document.getElementById('visible').checked ? 'Sì' : 'No'}</li>
-                  <li><strong>Tipologia:</strong> ${document.getElementById('type').value}</li>
-                  <li><strong>Immagine prodotto:</strong> ${document.getElementById('image').value ? document.getElementById('image').value.split('\\').pop() : 'Mantieni l\'immagine attuale'}</li>
-            = `;
-                priceField.value = formattedPrice;
-            }
-        });
+    //   palceholder
     </script>
 
     <style scoped>
