@@ -1,0 +1,123 @@
+.form_container{
+    height: 85vh;
+    box-shadow: 0px 0px 10px 2px rgb(48, 47, 47);
+    color: white;
+}
+
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.video_Section{
+    order: 1;
+}
+
+.form_section_container{
+    order: 2;
+    background-image: url(/public/videos/038-desktop.jpg);
+    background-size: cover;
+}
+.my_logo{
+    width: 50%;
+}
+.form_card{
+    border: unset !important;
+    color: white !important;
+    background-color: unset !important;
+}
+.form_header{
+    border: unset !important;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.form-check-input:checked{
+    background-color: #BF1B2C  !important;
+    border: 0;
+ }
+ .form-check-input:focus, .label::after, label.form-check-label:focus, .form-check-input::after, .form-check-input:not(:disabled):not(.disabled):active:focus {
+    color: black;
+    box-shadow: unset !important;
+ }
+
+.myLogin_Register_button{
+    background-color: white !important;
+    color: black !important;
+    border-color: #5c4c4e !important;
+}
+.mySwapLogin_Register_button{
+    background-color: white !important;
+    color: black !important;
+    border-color: #5c4c4e !important;
+}
+.my_forgotPsw{
+    color: white !important;
+}
+
+// FORM CUSTOM
+
+.form_box{
+    position: relative;
+    height: 80px;
+    padding: 10px 0;
+}
+
+.form_label{
+    position: absolute;
+    top: 18px;
+    left: 10px;
+    font-size: 0.9rem;
+    color: rgb(12, 11, 11);
+    padding: 0 5px;
+   
+    border-radius: 25px;
+    z-index: 998;
+    
+    transition: 0.2s ease;
+}
+.custom_input{
+    position: absolute;
+    width: 100%;
+    color: rgb(2, 2, 2);
+    outline: none;
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+
+    z-index: 500;
+
+    transition: 0.1s ease;
+}
+
+.custom_input:focus{
+    color: rgb(0, 0, 0);
+    border: 2px solid white(122, 118, 118);
+}
+.custom_input:focus + .form_label,
+.custom_input:valid + .form_label{
+    color: white;
+    top: 30px;
+    transform: translate(-10px, -30px) scale(0.75);
+    background-image: url(/public/videos/038-desktop.jpg);
+    z-index: 999;
+
+}
+
+
+
+
+// CUSTOM RULES FOR INVALID FEEDBACK
+.invalid-feedback{
+    position: absolute;
+    bottom: -10px ;
+    left: 0;
+
+    width: 70% !important;
+    background-color: red;
+    color: white !important;
+    border-radius: 8px;
+    padding: 1px 10px;
+}

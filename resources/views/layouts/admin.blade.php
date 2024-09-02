@@ -21,6 +21,7 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+    @yield('style')
 </head>
 
 <body>
