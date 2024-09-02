@@ -130,6 +130,7 @@
                             <!-- Step 7: Review & Submit -->
                             <div class="form-step">
                                 <h3>Riepilogo</h3>
+
                                 <ul id="reviewList"></ul>
                                 <button type="button" class="btn btn-secondary prev-btn">Indietro</button>
                                 <button type="submit" class="btn btn-success">Aggiorna il prodotto</button>
