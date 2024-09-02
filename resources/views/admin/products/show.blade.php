@@ -12,8 +12,13 @@
                     <div class="col-5 my-4 px-3">
 
                         <div class="card imgBox border-3 border-white">
-                            <img src="{{ $product->image_path }}" class="card-img object-fit-fill"></img>
+                            @if (Str::startsWith($product->image_path, 'http'))
+                            <img src="{{ $product->image_path }}" class="card-img object-fit-fill">
+                            @else
+                            <img src="{{ asset('storage/' . $product->image_path) }}" class="card-img object-fit-fill">
+                            @endif                       
                         </div>
+
 
                     </div>
 

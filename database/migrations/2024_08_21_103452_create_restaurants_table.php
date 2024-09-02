@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('PIVA');
             $table->text('image_path');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

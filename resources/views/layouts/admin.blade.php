@@ -34,18 +34,26 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="/">
-                                    <i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Home
-                                </a>
-                            </li>
+                    <li>
+                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.restaurants.index') }}">
+                            <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Il tuo Ristorante
+                        </a>
+                    </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.dashboard') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
-                                </a>
-                            </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.index' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.products.index') }}">
+                            <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Menù del ristorante
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.create' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.products.create') }}">
+                            <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Aggiungi un piatto
+                        </a>
+                    </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
