@@ -52,19 +52,6 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                        
-                        </div>
-
-                        <div class="mb-4 row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label my_invalidRLogFeed" for="remember">
-                                        {{ __("Mantieni l'accesso") }}
-                                    </label>
-                                </div>
-                            </div>
                         </div>
 
                         <!-- Pulsanti Login / ForgotPassw -->
@@ -93,7 +80,7 @@
 
 
                         {{-- EMAIL CUSTOM FORM --}}
-                        <div class="mb-4 form_box">
+                        <div class="mb-1 form_box">
                             <input id="register_email" type="text" class="custom_input @error('register_email') is-invalid @enderror" name="register_email" value="{{ old('register_email') }}" required autocomplete="email">
                             <div class="form_label">{{ __('Indirizzo E-Mail') }}</div>
 
@@ -105,7 +92,7 @@
                         </div>
 
                         {{-- PASSWORD CUSTOM FORM --}}
-                        <div class="mb-4 form_box">
+                        <div class="mb-1 form_box">
                             <input id="register_password" type="password" class="custom_input @error('register_password') is-invalid @enderror" name="register_password" required autocomplete="new-password">                                                    
                             <div class="form_label">{{ __('Password') }}</div>
 
@@ -116,12 +103,66 @@
                             @enderror         
                         </div>
 
-                        <div class="mb-4 form_box">                      
+                        {{-- Nome Attività CUSTOM FORM --}}
+                        <div class="mb-1 form_box">
+                            <input id="password" type="password" class="custom_input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">                                                    
+                            <div class="form_label">{{ __('Nome Attività') }}</div>
+
+                            @error('password')
+                            <span class="invalid-feedback my_invalidRLogFeed" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                        {{-- Indirizzo CUSTOM FORM --}}
+                        <div class="mb-1 form_box">
+                            <input id="password" type="password" class="custom_input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">                                                    
+                            <div class="form_label">{{ __('Indirizzo') }}</div>
+
+                            @error('password')
+                            <span class="invalid-feedback my_invalidRLogFeed" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+                        {{-- P.IVA CUSTOM FORM --}}
+                        <div class="mb-1 form_box">
+                            <input id="password" type="password" class="custom_input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">                                                    
+                            <div class="form_label">{{ __('P.IVA') }}</div>
+
+                            @error('password')
+                            <span class="invalid-feedback my_invalidRLogFeed" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+
+
+
+
+
+
+
+                        <div class="mb-1 row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label my_invalidRLogFeed" for="remember">
+                                        {{ __("Mantieni l'accesso") }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-1 form_box">                      
                             <input id="register_password-confirm" type="password" class="custom_input" name="register_password_confirmation" required autocomplete="new-password">
                             <div class="form_label">{{ __('Conferma Password') }}</div>
                         </div>
 
-                        <div class="mb-4 row mb-0">
+                        <div class="mb-1 row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary myLogin_Register_button">
                                     {{ __('Registrati') }}
