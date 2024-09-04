@@ -25,8 +25,10 @@
                                         </span>
                                     @enderror
                                 </div>
-
                             </div>
+                            <p id="error_name" class="bg-danger rounded m-0 px-1">
+                                <strong></strong>
+                            </p>
 
                             <!-- Step 2: Ingredients -->
                             <div class="form-step">
@@ -40,8 +42,10 @@
                                         </span>
                                     @enderror
                                 </div>
-
                             </div>
+                            <p id="error_ingredients" class="bg-danger rounded m-0 px-1">
+                                <strong></strong>
+                            </p>
 
                             <!-- Step 3: Price -->
                             <div class="form-step">
@@ -56,15 +60,17 @@
                                         </span>
                                     @enderror
                                 </div>
-
                             </div>
+                            <p id="error_price" class="bg-danger rounded m-0 px-1">
+                                <strong></strong>
+                            </p>
 
                             <!-- Step 4: Visibility -->
                             <div class="form-step">
                                 <div class="form-group mb-3 form-check">
                                     <input type="checkbox" class="form-check-input @error('visible') is-invalid @enderror"
                                         id="visible" name="visible"
-                                        {{ old('visible', $product->visible) ? true : false }}>
+                                        {{ old('visible', $product->visible) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="visible">Prodotto disponibile</label>
                                     @error('visible')
                                         <span class="invalid-feedback" role="alert">
@@ -74,11 +80,6 @@
                                 </div>
 
                             </div>
-
-
-                            {{-- ////////////////////////////////////////////////// --}}
-
-                            {{-- ////////////////////////////////////////////////// --}}
 
                             <!-- Step 5: Type -->
                             <div class="form-step">
@@ -124,17 +125,11 @@
                                     @enderror
                                 </div>
 
-                                
+
                             </div>
 
                             <!-- Step 7: Review & Submit -->
-                            <div class="form-step">
-                                <h3>Riepilogo</h3>
-
-                                <ul id="reviewList"></ul>
-                                <button type="button" class="btn btn-secondary prev-btn">Indietro</button>
-                                <button type="submit" class="btn btn-success">Aggiorna il prodotto</button>
-                            </div>
+                            <button type="submit" class="btn btn-success">Aggiorna il prodotto</button>
                         </form>
                     </div>
                 </div>
@@ -143,9 +138,8 @@
     </div>
 
 
-    <script>
-    //   palceholder
-    </script>
+    @vite(['resources/js/edit_product.js'])
+
 
     <style scoped>
         .form-step.active {
