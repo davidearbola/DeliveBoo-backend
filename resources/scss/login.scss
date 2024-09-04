@@ -1,6 +1,7 @@
 .form_container{
     height: 85vh;
     box-shadow: 0px 0px 10px 2px rgb(48, 47, 47);
+    margin-top: 7rem !important;
     color: white;
 }
 
@@ -127,7 +128,7 @@ video{
 
 
 header{
-    height: 15vh;
+    height: 12vh;
     position: fixed;
     top: 0;
     width: 100%;
@@ -150,7 +151,7 @@ header{
     header{
         height: 25vh;
     }
-    .my_logo{
+    #my_logo{
         margin: 0;
     }
 }
