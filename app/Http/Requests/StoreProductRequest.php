@@ -22,12 +22,12 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required|min:3|max:30",
-            "ingredients" => "nullable|string|max:255|",
-            "price" => "required|numeric|gt:-0.01|lt:10000|decimal:2",
-            "visible" => "boolean",
-            "type" => "string|required|in:Food,Bibite,Bevande Alcoliche,Dessert",
-            "image_path" => "image"
+            'name' => 'required|string|min:3|max:255',
+            'ingredients' => 'required|string|min:3|max:255',
+            'price' => 'required|numeric|gt:0|lt:10000|decimal:2',
+            'visible' => 'boolean',
+            'type' => 'string|required|in:Food,Bibite,Bevande Alcoliche,Dessert',
+            'image_path' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ];
     }
     protected function prepareForValidation()
