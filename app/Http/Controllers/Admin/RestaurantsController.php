@@ -21,7 +21,7 @@ class RestaurantsController extends Controller
 
         $categories = Category::all();
 
-        return view('admin.restaurants.index', compact('restaurant','categories'));
+        return view('admin.restaurants.index', compact('restaurant', 'categories'));
     }
 
     /**
@@ -29,16 +29,17 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $categories = Category::all();
+        // $user = Auth::user();
+        // $categories = Category::all();
 
-        //Se ha già un ristorante lo si rimanda alla index
-        if($user->restaurant){
-            return redirect()->route('admin.restaurants.index');
-        }
+        // //Se ha già un ristorante lo si rimanda alla index
+        // if($user->restaurant){
+        //     return redirect()->route('admin.restaurants.index');
+        // }
 
-        //Altrimenti procede
-        return view('admin.restaurants.create', compact('user','categories'));
+        // //Altrimenti procede
+        // return view('admin.restaurants.create', compact('user','categories'));
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
@@ -46,20 +47,20 @@ class RestaurantsController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        $data = $request->validated();
-        $data['user_id'] = $user->id;
+        // $data = $request->validated();
+        // $data['user_id'] = $user->id;
 
 
-        if ($request->hasFile('image_path')) {
-            $image_path = $request->file('image_path')->store('uploads', 'public');
-            $data['image_path'] = $image_path;
-        }
+        // if ($request->hasFile('image_path')) {
+        //     $image_path = $request->file('image_path')->store('uploads', 'public');
+        //     $data['image_path'] = $image_path;
+        // }
 
-        $newRestaurant = new Restaurant();
-        $newRestaurant->fill($data);
-        $newRestaurant->save();
+        // $newRestaurant = new Restaurant();
+        // $newRestaurant->fill($data);
+        // $newRestaurant->save();
 
         return redirect()->route('admin.restaurants.index');
     }
@@ -69,7 +70,7 @@ class RestaurantsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
@@ -77,7 +78,7 @@ class RestaurantsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
@@ -85,7 +86,7 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
@@ -93,6 +94,6 @@ class RestaurantsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return redirect()->route('admin.restaurants.index');
     }
 }
