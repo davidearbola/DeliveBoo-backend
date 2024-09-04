@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\RestaurantsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('http://localhost:5173');
 });
 
 Route::middleware(['auth'])
