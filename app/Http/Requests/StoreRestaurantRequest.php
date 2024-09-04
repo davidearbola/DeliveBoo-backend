@@ -22,15 +22,14 @@ class StoreRestaurantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
+            'name' => 'required|string|min:3|max:255',
             'description' => 'required|string',
-            'phone' => 'required',
-            'address' => 'required|string',
-            'PIVA' => 'required',
-            'image_path' => 'required|image',
-
+            'phone' => 'required|string|min:10|max:11|regex:/^\d+$/',
+            'address' => 'required|string|max:255',
+            'PIVA' => 'required|string|size:11|regex:/^\d+$/',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'categories' => 'array',
-            'categories.*' => 'exists:categories,id',
+            'categories.*' => 'exists:categories,id'
         ];
     }
 }

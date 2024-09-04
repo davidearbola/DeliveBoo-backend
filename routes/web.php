@@ -31,8 +31,7 @@ Route::middleware(['auth'])
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('products', ProductsController::class);
-        Route::resource('restaurants',RestaurantsController::class);
-
+        Route::resource('restaurants', RestaurantsController::class);
     });
 
 require __DIR__ . '/auth.php';
