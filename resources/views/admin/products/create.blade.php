@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Modifica il prodotto</div>
+                    <div class="card-header">Aggiungi un prodotto al tuo ristorante</div>
 
                     <div class="card-body">
                         <form id="updateProductForm" method="POST" action="{{ route('admin.products.store') }}"
@@ -120,7 +120,7 @@
                             </div>
 
                             <!-- Step 7: Submit -->
-                            <button type="submit" class="btn btn-success">Aggiorna il prodotto</button>
+                            <button type="submit" class="btn btn-success">Crea prodotto</button>
                         </form>
                     </div>
                 </div>
