@@ -1,8 +1,8 @@
 // VALIDAZIONE NAME
-document.getElementById("name").addEventListener("blur", function () {
+document.getElementById("name").addEventListener("input", function () {
     const name = document.getElementById("name").value;
 
-    if (name.length < 4 || name.length > 255) {
+    if (name.length < 3 || name.length > 255) {
         document.querySelector("#error_name>strong").innerHTML =
             "Il nome deve essere compreso tra 3 e 255 caratteri";
     } else {
@@ -11,7 +11,7 @@ document.getElementById("name").addEventListener("blur", function () {
 });
 
 // VALIDAZIONE INGREDIENTS
-document.getElementById("ingredients").addEventListener("blur", function () {
+document.getElementById("ingredients").addEventListener("input", function () {
     const ingredients = document.getElementById("ingredients").value;
 
     if (ingredients === "") {
@@ -24,17 +24,20 @@ document.getElementById("ingredients").addEventListener("blur", function () {
 
 // VALIDAZIONE PRICE
 document.getElementById("price").addEventListener("blur", function (event) {
-    let value = parseFloat(event.target.value);
+    // Sostituisci le virgole con i punti prima di validare
+    let value = event.target.value.replace(",", ".");
+
+    value = parseFloat(value);
 
     // Controlla se il numero è maggiore di zero
-    if (value > 0) {
+    if (!isNaN(value) && value > 0) {
         // Formatta il numero a 2 decimali
         event.target.value = value.toFixed(2);
         document.querySelector("#error_price>strong").innerHTML = "";
     } else {
-        // Se il numero è negativo o zero, resetta il campo
+        // Se il numero è negativo, zero o NaN, resetta il campo
         event.target.value = "";
         document.querySelector("#error_price>strong").innerHTML =
-            "Il prezzo deve essere un numero positivo.";
+            "Il prezzo deve essere un numero positivo maggiore di 0";
     }
 });

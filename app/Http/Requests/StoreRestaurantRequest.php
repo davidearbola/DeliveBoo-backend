@@ -24,11 +24,11 @@ class StoreRestaurantRequest extends FormRequest
         return [
             'name' => 'required|string|min:3|max:255',
             'description' => 'required|string',
-            'phone' => 'required|string|min:10|max:11|regex:/^\d+$/',
+            'phone' => 'required|string|size:10|regex:/^\d+$/',
             'address' => 'required|string|max:255',
             'PIVA' => 'required|string|size:11|regex:/^\d+$/',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'categories' => 'array',
+            'categories' => 'required|array',
             'categories.*' => 'exists:categories,id'
         ];
     }

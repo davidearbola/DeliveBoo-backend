@@ -157,9 +157,10 @@
 
 
                             {{-- DESCRIZIONE CUSTOM FORM --}}
-                            <div class="mb-3 form_box">
-                                <textarea id="description" class="custom_input @error('description') is-invalid @enderror" name="description" required
-                                    autocomplete="description">{{ old('description') }}</textarea>
+                            <div class="mb-1 form_box">
+                                <input type="text" id="description"
+                                    class="custom_input @error('description') is-invalid @enderror" name="description"
+                                    required autocomplete="description" value="{{ old('description') }}">
                                 <div class="form_label">{{ __('Descrizione') }}</div>
 
                                 <p id="error_description" class="bg-danger rounded m-0 px-1 my_absolute">
@@ -171,7 +172,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
+
 
 
                             {{-- TELEFONO CUSTOM FORM --}}
@@ -267,8 +270,8 @@
                                 @enderror
                             </div>
 
-                            <div class="mb-1 row mb-0">
-                                <div class="col-md-6 offset-md-4">
+                            <div class=" row mb-0 justify-content-center">
+                                <div class="col-md-6 text-center">
                                     <button id="button_register" type="submit"
                                         class="btn btn-primary myLogin_Register_button"
                                         {{ $errors->any() ? '' : 'disabled' }}>
