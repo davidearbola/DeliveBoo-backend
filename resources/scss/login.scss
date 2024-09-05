@@ -107,7 +107,21 @@ video{
 
 }
 
+.my_categoriesContainer{
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.my_categoryBox{
+width: calc(100% / 4);
+}
 
+.notALink{
+
+}
+.my_logoAsLink{
+    display: none !important;
+}
 
 
 // CUSTOM RULES FOR INVALID FEEDBACK
@@ -121,6 +135,17 @@ video{
     color: white !important;
     border-radius: 8px;
     padding: 1px 10px;
+}
+
+// #error_login_mail{
+//     position: absolute !important;
+//     bottom: -8px !important;
+//     width: 100% !important;
+// }
+.my_absolute{
+    position: absolute !important;
+    bottom: -8px !important;
+    width: 100% !important;
 }
 
 
@@ -148,10 +173,26 @@ header{
     padding: 2px 10px;
 }
 @media screen and (max-width: 992px) {
-    header{
-        height: 25vh;
+
+    #my_container{
+        margin-top: 0 !important;
+    }
+    
+    #my_headerLayout{
+        height: 25vh !important;
+        display: none !important;
     }
     #my_logo{
         margin: 0;
+    }
+    .form_container{
+        margin-top: 0rem !important;
+        height: 100vh !important;
+    }
+    .notALink{
+        display: none !important;
+    }
+    .my_logoAsLink{
+        display: block !important;
     }
 }

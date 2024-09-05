@@ -4,11 +4,11 @@
 @endsection
 
 @section('content')
-    <div class="container mt-4">
-        <div class="row row-cols-2 rounded form_container">
+    <div class="container mt-4" id="my_container">
+        <div class="row row-cols-1 row-cols-lg-2 rounded form_container">
 
             <!-- VIDEO SECTION  -->
-            <div class="video_Section p-0">
+            <div class="video_Section d-none d-lg-block p-0">
                 <video muted autoplay loop src="{{ asset('videos/Login_Food Reel FH Studio.mp4') }}" type="video/mp4"
                     class="rounded-start myVideo">
                     <img src="{{ asset('videos/errorVideo.png') }}" alt="Error Video">
@@ -20,7 +20,11 @@
                 <div class="card bg-transparent form_card">
 
                     <div class="card-header form_header">
-                        <img src="{{ asset('images/DeliveBoo-Photoroom.png') }}" class="my_logo">
+                        {{-- Se in formato tablet/cellulare si toglie l'header e questo logo reindirizza alla home del front --}}
+                        <a href="http://localhost:5173" class="my_logoAsLink">
+                            <img src="{{ asset('images/DeliveBoo-Photoroom.png') }}" class="my_logo">
+                        </a>
+                        <img src="{{ asset('images/DeliveBoo-Photoroom.png') }}" class="my_logo notALink">
                     </div>
 
                     <div class="card-body">
@@ -35,15 +39,17 @@
                                     value="{{ old('email') }}" required autocomplete="email">
                                 <div class="form_label">{{ __('Indirizzo E-Mail') }}</div>
 
+                                <p id="error_login_mail" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('email')
                                     <span class="invalid-feedback my_invalidRLogFeed" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <p id="error_login_mail" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- PASSWORD CUSTOM FORM --}}
                             <div class="mb-4 form_box">
@@ -60,14 +66,14 @@
                             </div>
 
                             <!-- Pulsanti Login / ForgotPassw -->
-                            <div class="mb-2 row mb-0">
-                                <div class="col-md-7 offset-md-5">
+                            <div class="mb-2 row mb-0 justify-content-center">
+                                <div class="col-auto">
                                     <button id="login_button" type="submit"
                                         class="btn btn-primary myLogin_Register_button">
                                         {{ __('Login') }}
                                     </button>
                                 </div>
-                                <div class="mb-0 col-md-8 offset-md-4 mb-0">
+                                <div class="mb-0 col-8 offset-4 mb-0">
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link my_forgotPsw" href="{{ route('password.request') }}">
                                             {{ __('Password dimenticata?') }}
@@ -92,15 +98,17 @@
                                     title="Inserisci un indirizzo email valido con un'estensione, es. .com">
                                 <div class="form_label">{{ __('Indirizzo E-Mail') }}</div>
 
+                                <p id="error_mail" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('register_email')
                                     <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <p id="error_mail" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- PASSWORD CUSTOM FORM --}}
                             <div class="mb-1 form_box">
@@ -109,15 +117,17 @@
                                     name="register_password" required autocomplete="new-password">
                                 <div class="form_label">{{ __('Password') }}</div>
 
+                                <p id="error_password" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('register_password')
                                     <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <p id="error_password" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- CONFERMA PASSWORD CUSTOM FORM --}}
                             <div class="mb-1 form_box">
@@ -134,15 +144,17 @@
                                     title="Il nome deve essere una stringa di almeno 3 caratteri e massimo 255">
                                 <div class="form_label">{{ __('Nome del Ristorante') }}</div>
 
+                                <p id="error_name" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('name')
                                     <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <p id="error_name" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- DESCRIZIONE CUSTOM FORM --}}
                             <div class="mb-3 form_box">
@@ -150,15 +162,17 @@
                                     autocomplete="description">{{ old('description') }}</textarea>
                                 <div class="form_label">{{ __('Descrizione') }}</div>
 
+                                <p id="error_description" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('description')
                                     <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <p id="error_description" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- TELEFONO CUSTOM FORM --}}
                             <div class="mb-1 form_box">
@@ -168,15 +182,17 @@
                                     title="Il telefono deve essere una stringa numerica di almeno 10 e massimo 11 caratteri">
                                 <div class="form_label">{{ __('Telefono') }}</div>
 
+                                <p id="error_phone" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('phone')
                                     <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <p id="error_phone" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- INDIRIZZO CUSTOM FORM --}}
                             <div class="mb-1 form_box">
@@ -186,15 +202,17 @@
                                     title="L'indirizzo deve essere una stringa di almeno 3 caratteri e massimo 255">
                                 <div class="form_label">{{ __('Indirizzo') }}</div>
 
+                                <p id="error_address" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('address')
                                     <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <p id="error_address" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- P.IVA CUSTOM FORM --}}
                             <div class="mb-1 form_box">
@@ -204,6 +222,10 @@
                                     title="La P.IVA deve essere una stringa numerica di esattamente 11 caratteri">
                                 <div class="form_label">{{ __('P.IVA') }}</div>
 
+                                <p id="error_PIVA" class="bg-danger rounded m-0 px-1 my_absolute">
+                                    <strong></strong>
+                                </p>
+
                                 @error('PIVA')
                                     <span class="invalid-feedback my_invalidRegFeed" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -211,15 +233,13 @@
                                 @enderror
                             </div>
 
-                            <p id="error_PIVA" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             {{-- CATEGORIE CUSTOM FORM --}}
-                            <div class="form-group mb-3">
-                                <label>Seleziona le categorie del tuo ristorante</label>
+                            <label class="mt-2">Seleziona le categorie del tuo ristorante</label>
+                            <div class="form-group my-3 my_categoriesContainer">
                                 @foreach ($categories as $category)
-                                    <div class="form-check">
+                                    <div class="form-check my_categoryBox">
                                         <input class="form-check-input" type="checkbox" name="categories[]"
                                             value="{{ $category->id }}" id="category{{ $category->id }}">
                                         <label class="form-check-label" for="category{{ $category->id }}">
@@ -262,8 +282,8 @@
                         <hr>
 
                         {{-- TASTO LOGIN/REGISTRATI --}}
-                        <div class="mb-4 row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="mb-4 row mb-0 justify-content-center">
+                            <div class="col-auto">
                                 <button type="button"
                                     class="btn btn-primary mySwapLogin_Register_button">{{ __('Registra il tuo ristorante') }}
                                 </button>

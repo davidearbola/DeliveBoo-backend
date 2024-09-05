@@ -34,6 +34,7 @@ function swapOrder() {
                 myVideo.classList.replace("rounded-start", "rounded-end");
                 formSection.classList.replace("rounded-end", "rounded-start");
                 registerButton.innerHTML = "Vai al Login";
+
             } else {
                 loginCardBody.classList.remove("d-none");
                 registerCardBody.classList.add("d-none");
