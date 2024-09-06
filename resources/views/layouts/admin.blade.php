@@ -27,12 +27,20 @@
 
 <body>
     <div id="app">
-
+    
         <div class="container-fluid vh-100">
             <div class="row h-100">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
+
+                    <li>
+                        <a class="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
+                            href="http://localhost:5173">
+                            <i class="fa-solid fa-house fa-lg fa-fw"></i> Home
+                        </a>
+                    </li>
+        
 
                     <li>
                         <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
