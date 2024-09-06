@@ -34,7 +34,6 @@ function swapOrder() {
                 myVideo.classList.replace("rounded-start", "rounded-end");
                 formSection.classList.replace("rounded-end", "rounded-start");
                 registerButton.innerHTML = "Vai al Login";
-
             } else {
                 loginCardBody.classList.remove("d-none");
                 registerCardBody.classList.add("d-none");
@@ -80,7 +79,7 @@ function validateEmail(email) {
 }
 
 // LOGIN
-document.getElementById("email").addEventListener("blur", function () {
+document.getElementById("email").addEventListener("input", function () {
     const email = this.value;
 
     if (!validateEmail(email)) {
@@ -94,25 +93,27 @@ document.getElementById("email").addEventListener("blur", function () {
 
 // REGISTRAZIONE
 // Controlla l'email quando l'utente si sposta fuori dal campo email
-document.getElementById("register_email").addEventListener("blur", function () {
-    const email = this.value;
+document
+    .getElementById("register_email")
+    .addEventListener("input", function () {
+        const email = this.value;
 
-    if (!validateEmail(email)) {
-        document.querySelector("#error_mail>strong").innerHTML =
-            "Email non valida";
-        emailValidate = false;
-        registerButton.setAttribute("disabled", "disabled");
-    } else {
-        document.querySelector("#error_mail>strong").innerHTML = "";
-        emailValidate = true;
-        removeAttr();
-    }
-});
+        if (!validateEmail(email)) {
+            document.querySelector("#error_mail>strong").innerHTML =
+                "Email non valida";
+            emailValidate = false;
+            registerButton.setAttribute("disabled", "disabled");
+        } else {
+            document.querySelector("#error_mail>strong").innerHTML = "";
+            emailValidate = true;
+            removeAttr();
+        }
+    });
 
 // Validazione delle password quando si lascia la input di conferma
 document
     .getElementById("register_password-confirm")
-    .addEventListener("blur", function () {
+    .addEventListener("input", function () {
         const password = document.getElementById("register_password").value;
         const confirmPassword = document.getElementById(
             "register_password-confirm"
@@ -130,10 +131,10 @@ document
     });
 
 // Validazione del name quando si lascia la input del name
-document.getElementById("name").addEventListener("blur", function () {
+document.getElementById("name").addEventListener("input", function () {
     const name = document.getElementById("name").value;
 
-    if (name.length < 4 || name.length > 255) {
+    if (name.length < 3 || name.length > 255) {
         document.querySelector("#error_name>strong").innerHTML =
             "Il nome deve essere compreso tra 3 e 255 caratteri";
         nameValidate = false;
@@ -146,7 +147,7 @@ document.getElementById("name").addEventListener("blur", function () {
 });
 
 // validazione description quando si lascia la input
-document.getElementById("description").addEventListener("blur", function () {
+document.getElementById("description").addEventListener("input", function () {
     const description = document.getElementById("description").value;
     if (description === "") {
         document.querySelector("#error_description>strong").innerHTML =
@@ -161,11 +162,15 @@ document.getElementById("description").addEventListener("blur", function () {
 });
 
 // validazione phone quando si lascia la input
-document.getElementById("phone").addEventListener("blur", function () {
+document.getElementById("phone").addEventListener("input", function () {
     const phone = document.getElementById("phone").value;
-    if (phone.length < 10 || phone.length > 11) {
+
+    // Regex per controllare che ci siano solo numeri
+    const phonePattern = /^\d{10}$/;
+
+    if (!phonePattern.test(phone)) {
         document.querySelector("#error_phone>strong").innerHTML =
-            "Inserisci un numero di telefono con minimo 10 cifre e max 11 cifre";
+            "Inserisci un numero di telefono valido di 10 cifre (solo numeri).";
         phoneValidate = false;
         registerButton.setAttribute("disabled", "disabled");
     } else {
@@ -176,7 +181,7 @@ document.getElementById("phone").addEventListener("blur", function () {
 });
 
 // validazione address quando si lascia la input
-document.getElementById("address").addEventListener("blur", function () {
+document.getElementById("address").addEventListener("input", function () {
     const address = document.getElementById("address").value;
     if (address === "") {
         document.querySelector("#error_address>strong").innerHTML =
@@ -191,11 +196,15 @@ document.getElementById("address").addEventListener("blur", function () {
 });
 
 // validazione PIVA quando si lascia la input
-document.getElementById("PIVA").addEventListener("blur", function () {
+document.getElementById("PIVA").addEventListener("input", function () {
     const PIVA = document.getElementById("PIVA").value;
-    if (PIVA.length !== 11) {
+
+    // Regex per controllare che la P.IVA sia composta da 11 cifre numeriche
+    const PIVAPattern = /^\d{11}$/;
+
+    if (!PIVAPattern.test(PIVA)) {
         document.querySelector("#error_PIVA>strong").innerHTML =
-            "La P.IVA deve essere un numero di 11 cifre";
+            "La P.IVA deve essere composta da 11 cifre numeriche.";
         PIVAValidate = false;
         registerButton.setAttribute("disabled", "disabled");
     } else {

@@ -19,6 +19,9 @@
                                     <label for="name">Nome del prodotto</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                         id="name" name="name" value="{{ old('name', $product->name) }}" required>
+                                    <p id="error_name" class="bg-danger text-white rounded m-0 px-1">
+                                        <strong></strong>
+                                    </p>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -26,9 +29,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <p id="error_name" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             <!-- Step 2: Ingredients -->
                             <div class="form-step">
@@ -36,6 +37,9 @@
                                     <label for="ingredients">Ingredienti</label>
                                     <textarea class="form-control @error('ingredients') is-invalid @enderror" id="ingredients" name="ingredients"
                                         rows="3">{{ old('ingredients', $product->ingredients) }}</textarea>
+                                    <p id="error_ingredients" class="bg-danger text-white rounded m-0 px-1">
+                                        <strong></strong>
+                                    </p>
                                     @error('ingredients')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -43,9 +47,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <p id="error_ingredients" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             <!-- Step 3: Price -->
                             <div class="form-step">
@@ -54,6 +56,9 @@
                                     <input type="number" class="form-control @error('price') is-invalid @enderror"
                                         id="price" name="price" value="{{ old('price', $product->price) }}"
                                         step="0.01" required>
+                                    <p id="error_price" class="bg-danger text-white rounded m-0 px-1">
+                                        <strong></strong>
+                                    </p>
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -61,9 +66,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <p id="error_price" class="bg-danger rounded m-0 px-1">
-                                <strong></strong>
-                            </p>
+
 
                             <!-- Step 4: Visibility -->
                             <div class="form-step">
