@@ -111,6 +111,25 @@ document
     });
 
 // Validazione delle password quando si lascia la input di conferma
+
+//Validazione Password
+document.getElementById('register_password').addEventListener("input", function () {
+    const password = document.getElementById("register_password").value;
+    const confirmPassword = document.getElementById(
+        "register_password-confirm"
+    ).value;
+    if (password !== confirmPassword || password.length<8) {
+        document.querySelector("#error_password>strong").innerHTML =
+            "La password non corrisponde e/o è minore di 8 caratteri";
+        passwordValidate = false;
+        registerButton.setAttribute("disabled", "disabled");
+    } else {
+        document.querySelector("#error_password>strong").innerHTML = "";
+        passwordValidate = true;
+        removeAttr();
+    }
+});
+
 document
     .getElementById("register_password-confirm")
     .addEventListener("input", function () {
@@ -118,9 +137,9 @@ document
         const confirmPassword = document.getElementById(
             "register_password-confirm"
         ).value;
-        if (password !== confirmPassword) {
+        if (password !== confirmPassword || password.length<8) {
             document.querySelector("#error_password>strong").innerHTML =
-                "Le password non corrispondono";
+                "La password non corrisponde e/o è minore di 8 caratteri";
             passwordValidate = false;
             registerButton.setAttribute("disabled", "disabled");
         } else {
@@ -211,6 +230,28 @@ document.getElementById("PIVA").addEventListener("input", function () {
         document.querySelector("#error_PIVA>strong").innerHTML = "";
         PIVAValidate = true;
         removeAttr();
+    }
+});
+
+// Validazione Checkbox group
+registerButton.addEventListener("click", function (event) {
+    // Controlla se almeno una casella è selezionata
+    const checkboxes = document.querySelectorAll(".category-checkbox");
+    let checked = false;
+
+    checkboxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+            checked = true;
+        }
+    });
+
+    if (!checked) {
+        // Mostra il messaggio di errore
+        document.getElementById("category-error").style.display = "block";
+        event.preventDefault(); // Previeni l'invio del form
+    } else {
+        // Nascondi il messaggio di errore se una casella è selezionata
+        document.getElementById("category-error").style.display = "none";
     }
 });
 

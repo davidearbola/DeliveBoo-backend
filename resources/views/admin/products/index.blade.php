@@ -6,7 +6,13 @@
 @section('content')
 <div style="max-width: 1400px">
 
-    <h1 class="my-3 text-center">LISTA PRODOTTI</h1>
+    <div class="row align-items-center justify-content-between px-3">      
+        <p class="col-auto m-0">Totale prodotti: {{ count($total_products) }}</p>
+        <h1 class="col-auto my-3 text-center">LISTA PRODOTTI</h1>
+        <a class="col-auto btn btn-success" href="{{route("admin.products.create")}}">Crea Prodotto</a>
+
+    </div>
+
 
     <div class="table-responsive">
         <table class="table table-success text-center align-middle">
@@ -46,13 +52,17 @@
                     </td>
 
                     <td>
-                        <button class="btn btn-info me-2">
-                            <a href="{{ route('admin.products.show', $singleProduct) }}" class="text-white"><i class="fa-solid fa-circle-info"></i></a>
-                        </button>
+                            <a href="{{ route('admin.products.show', $singleProduct) }}">
+                                <button class="btn btn-info me-2 text-white">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                </button>
+                            </a>
 
-                        <button class="btn btn-warning me-2">
-                            <a href="{{ route('admin.products.edit', $singleProduct) }}" class="text-white"><i class="fa-solid fa-pen"></i></a>
-                        </button>
+                            <a href="{{ route('admin.products.edit', $singleProduct) }}">
+                                <button class="btn btn-warning me-2 text-white">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </a>
                    
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{ $singleProduct->id }}">
                             <i class="fa-solid fa-trash"></i>

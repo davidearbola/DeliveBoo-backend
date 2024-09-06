@@ -39,7 +39,7 @@
     
                     <div class="">
                         @guest
-                        <a  href="{{ route('login')}}">
+                        <a  href="{{ route('auth')}}">
                             <button type="button" class="btn btn-warning my_button">Login/Registrati</button>
                         </a>
                         @else

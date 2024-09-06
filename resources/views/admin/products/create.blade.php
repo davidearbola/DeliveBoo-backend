@@ -81,30 +81,39 @@
                                 </div>
                             </div>
 
-                            <!-- Step 5: Type -->
-                            <div class="form-step">
-                                <div class="form-group mb-3">
-                                    <label for="type">Tipologia del prodotto</label>
-                                    <select class="form-control @error('type') is-invalid @enderror" id="type"
-                                        name="type" required>
-                                        <option value="" disabled {{ old('type') ? '' : 'selected' }}>
-                                            Seleziona tipologia</option>
-                                        <option value="Food" {{ old('type') == 'Food' ? 'selected' : '' }}>Food</option>
-                                        <option value="Bibite" {{ old('type') == 'Bibite' ? 'selected' : '' }}>Bibite
-                                        </option>
-                                        <option value="Bevande Alcoliche"
-                                            {{ old('type') == 'Bevande Alcoliche' ? 'selected' : '' }}>
-                                            Bevande Alcoliche</option>
-                                        <option value="Dessert" {{ old('type') == 'Dessert' ? 'selected' : '' }}>Dessert
-                                        </option>
-                                    </select>
-                                    @error('type')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                            <div class="form-group mb-3">
+                                <label for="type">Tipologia del prodotto: </label>
+                                <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                                    <label class="btn btn-outline-danger {{ old('type') == 'Food' ? 'active' : '' }}">
+                                        <input type="radio" name="type" value="Food"
+                                            @error('type') is-invalid @enderror
+                                            {{ old('type') == 'Food' ? 'checked' : '' }}> Food
+                                    </label>
+                                    <label class="btn btn-outline-warning {{ old('type') == 'Bibite' ? 'active' : '' }}">
+                                        <input type="radio" name="type" value="Bibite"
+                                            @error('type') is-invalid @enderror
+                                            {{ old('type') == 'Bibite' ? 'checked' : '' }}> Bibite
+                                    </label>
+                                    <label
+                                        class="btn btn-outline-dark {{ old('type') == 'Bevande Alcoliche' ? 'active' : '' }}">
+                                        <input type="radio" name="type" value="Bevande Alcoliche"
+                                            @error('type') is-invalid @enderror
+                                            {{ old('type') == 'Bevande Alcoliche' ? 'checked' : '' }}> Bevande Alcoliche
+                                    </label>
+                                    <label class="btn btn-outline-success {{ old('type') == 'Dessert' ? 'active' : '' }}">
+                                        <input type="radio" name="type" value="Dessert"
+                                            @error('type') is-invalid @enderror
+                                            {{ old('type') == 'Dessert' ? 'checked' : '' }}> Dessert
+                                    </label>
                                 </div>
-
+                                <p id="error_radio" class="bg-danger text-white rounded m-0 px-1">
+                                    <strong></strong>
+                                </p>
+                                @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- Step 6: Image Upload -->
@@ -113,7 +122,7 @@
                                     <label for="image_path">Immagine del prodotto</label>
                                     <input type="file"
                                         class="form-control-file @error('image_path') is-invalid @enderror" id="image_path"
-                                        name="image_path">
+                                        name="image_path" required accept="image/*">
                                     @error('image_path')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

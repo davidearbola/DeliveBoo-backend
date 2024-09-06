@@ -41,3 +41,27 @@ document.getElementById("price").addEventListener("blur", function (event) {
             "Il prezzo deve essere un numero positivo maggiore di 0";
     }
 });
+
+// VALIDAZIONE TYPE
+const button = document.querySelector('button[type="submit"]');
+const error = document.querySelector("#error_radio > strong");
+
+button.addEventListener("click", function (event) {
+    const radios = document.querySelectorAll(
+        'input[type="radio"][name="type"]'
+    );
+    let selected = false;
+
+    radios.forEach((radio) => {
+        if (radio.checked) {
+            selected = true;
+        }
+    });
+
+    if (!selected) {
+        error.innerHTML = "Seleziona una tipologia di prodotto.";
+        event.preventDefault();
+    } else {
+        error.innerHTML = "";
+    }
+});

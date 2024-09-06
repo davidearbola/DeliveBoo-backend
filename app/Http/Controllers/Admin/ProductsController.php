@@ -21,8 +21,9 @@ class ProductsController extends Controller
         $user = Auth::user();
         $restaurant = $user->restaurant;
         $products = $restaurant->products()->paginate(6);
+        $total_products= $restaurant->products()->get();
 
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products', 'total_products'));
     }
 
 

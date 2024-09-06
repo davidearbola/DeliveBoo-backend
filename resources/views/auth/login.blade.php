@@ -29,7 +29,7 @@
 
                     <div class="card-body">
                         {{-- Inizio Login Form --}}
-                        <form method="POST" action="{{ route('login') }}" class="my_LoginForm">
+                        <form method="POST" action="{{ route('auth') }}" class="my_LoginForm">
                             @csrf
 
                             {{-- MAIL CUSTOM FORM --}}
@@ -236,20 +236,22 @@
                                 @enderror
                             </div>
 
-
-
-                            {{-- CATEGORIE CUSTOM FORM --}}
+                            {{-- FORM CATEGORIE --}}
                             <label class="mt-2">Seleziona le categorie del tuo ristorante</label>
                             <div class="form-group my-3 my_categoriesContainer">
                                 @foreach ($categories as $category)
                                     <div class="form-check my_categoryBox">
-                                        <input class="form-check-input" type="checkbox" name="categories[]"
-                                            value="{{ $category->id }}" id="category{{ $category->id }}">
+                                        <input class="form-check-input category-checkbox" type="checkbox"
+                                            name="categories[]" value="{{ $category->id }}"
+                                            id="category{{ $category->id }}">
                                         <label class="form-check-label" for="category{{ $category->id }}">
                                             {{ $category->name }}
                                         </label>
                                     </div>
                                 @endforeach
+                                <div class="bg-danger rounded m-0 px-1 " id="category-error" style="display: none;">
+                                    Seleziona almeno una categoria.
+                                </div>
                                 @error('categories')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -260,7 +262,7 @@
                             {{-- IMMAGINE CUSTOM FORM --}}
                             <div class="mb-1 form_box">
                                 <input id="image_path" type="file" @error('image_path') is-invalid @enderror"
-                                    name="image_path" required>
+                                    name="image_path" accept="image/*" required>
                                 <div>{{ __('Carica un\'immagine') }}</div>
 
                                 @error('image_path')
@@ -304,4 +306,6 @@
     <script>
         window.showRegistrationForm = @json(session('showRegistrationForm', false));
     </script>
-<script src=@vite('resources/js/login_register.js') @endsection
+<script src=@vite('resources/js/login_register.js') 
+
+@endsection
