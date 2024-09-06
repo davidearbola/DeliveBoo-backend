@@ -26,10 +26,10 @@ class RestaurantsController extends Controller
             // Trova ristoranti che hanno tutte le categorie specificate
             $restaurants = Restaurant::whereHas('categories', function ($query) use ($categories) {
                 $query->whereIn('categories.id', $categories);
-            }, '=', $categoryCount)->get();
+            }, '=', $categoryCount)->with('categories')->get();
         } else {
             // Altrimenti, ottieni tutti i ristoranti
-            $restaurants = Restaurant::all();
+            $restaurants = Restaurant::with('categories')->get();
         }
 
         return response()->json([
