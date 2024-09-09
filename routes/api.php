@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BraintreeController;
 use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\RestaurantsController;
@@ -30,3 +31,6 @@ Route::get('restaurants/{restaurants_id}/products/{products_id}', [ProductsContr
 
 Route::get('categories', [CategoriesController::class, 'index']);
 Route::post('/orders', [OrderController::class, 'store']);
+
+Route::get('/braintree/token', [BraintreeController::class, 'generateToken']);
+Route::post('/braintree/checkout', [BraintreeController::class, 'checkout']);
