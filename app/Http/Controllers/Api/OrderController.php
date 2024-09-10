@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\RestaurantConfirmMail;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderProduct;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -49,6 +52,19 @@ class OrderController extends Controller
                 ]);
             }
         });
+
+        $restaurant = Restaurant::find($validatedData['restaurant_id']);
+        $orderMail = [
+            "name" => $validatedData['name'],
+            "email" => $validatedData['email'],
+            "phone" => $validatedData['phone'],
+            "address" => $validatedData['address'], 
+            'total_price' => floatval($validatedData['total_price']),
+            
+            "products" => $validatedData['products'],
+            "restaurant" => $restaurant,    
+        ];
+        Mail::to('hello@example.com')->send(new RestaurantConfirmMail($orderMail));
 
         return response()->json(['message' => 'Order placed successfully']);
     }
