@@ -33,7 +33,7 @@ Route::middleware(['auth'])
 
         Route::resource('products', ProductsController::class);
         Route::resource('restaurants', RestaurantsController::class);
-        Route::get('orders', [OrderController::class, 'index'])->name('index');
+        Route::resource('orders', OrderController::class);
     });
 
 require __DIR__ . '/auth.php';

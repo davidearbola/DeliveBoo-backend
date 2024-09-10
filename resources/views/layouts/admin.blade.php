@@ -50,6 +50,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.orders.index') }}">
+                            <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i> Ordini
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.index' ? 'bg-secondary' : '' }}"
                             href="{{ route('admin.products.index') }}">
                             <i class="fa-solid fa-burger fa-lg fa-fw"></i> Menù del ristorante
