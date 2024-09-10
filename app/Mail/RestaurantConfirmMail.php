@@ -16,11 +16,8 @@ class RestaurantConfirmMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $orderMail;
-    public function __construct($orderMail)
-    {
-        $this->orderMail = $orderMail;
-    }
+
+    public function __construct(public $order) {}
 
     /**
      * Get the message envelope.
@@ -28,7 +25,7 @@ class RestaurantConfirmMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Restaurant Confirm Mail',
+            subject: 'Nuovo ordine ricevuto',
         );
     }
 

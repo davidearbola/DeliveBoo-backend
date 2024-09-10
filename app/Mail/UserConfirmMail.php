@@ -16,11 +16,8 @@ class UserConfirmMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $order; 
-    public function __construct($order)
-    {
-        $this->order = $order;
-    }
+
+    public function __construct(public $order) {}
 
     /**
      * Get the message envelope.
@@ -28,7 +25,7 @@ class UserConfirmMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'User Confirm Mail',
+            subject: 'Ordine inviato',
         );
     }
 

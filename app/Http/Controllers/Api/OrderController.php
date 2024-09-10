@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\RestaurantConfirmMail;
+use App\Mail\UserConfirmMail;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
@@ -53,18 +54,24 @@ class OrderController extends Controller
             }
         });
 
+        $order = $request->all();
         $restaurant = Restaurant::find($validatedData['restaurant_id']);
-        $orderMail = [
-            "name" => $validatedData['name'],
-            "email" => $validatedData['email'],
-            "phone" => $validatedData['phone'],
-            "address" => $validatedData['address'], 
-            'total_price' => floatval($validatedData['total_price']),
-            
-            "products" => $validatedData['products'],
-            "restaurant" => $restaurant,    
-        ];
-        Mail::to('hello@example.com')->send(new RestaurantConfirmMail($orderMail));
+        if (!$restaurant) {
+            return response()->json(['error' => 'Ristorante non trovato'], 404);
+        };
+        $user = $restaurant->user;
+        $restaurant_email = $user->email;
+        // $orderMail = [
+        //     "name" => $validatedData['name'],
+        //     "email" => $validatedData['email'],
+        //     "phone" => $validatedData['phone'],
+        //     "address" => $validatedData['address'],
+        //     'total_price' => floatval($validatedData['total_price']),
+        //     "products" => $validatedData['products'],
+        //     // "restaurant" => $restaurant,
+        // ];
+        Mail::to($restaurant_email)->send(new RestaurantConfirmMail($order));
+        Mail::to($validatedData['email'])->send(new UserConfirmMail($order));
 
         return response()->json(['message' => 'Order placed successfully']);
     }
