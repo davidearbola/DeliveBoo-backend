@@ -1,28 +1,26 @@
 @extends('layouts.admin')
 @section('style')
-@vite('resources/scss/productIndex.scss')
+    @vite('resources/scss/productIndex.scss')
 @endsection
 
 @section('content')
-<div style="max-width: 1400px">
+<div style="max-width: 1400px" class="mx-auto">
     <h1 class="text-center">LISTA ORDINI</h1>
     <p class="ps-2">Totale ordini: {{ count($totalOrders) }}</p>
 
 
 
-    <div class="table-responsive">
-        <table class="table table-success text-center align-middle">
+    <div class="table-responsive rounded">
+        <table class="table table-success text-center align-middle mb-0">
 
-            <thead>
-                <tr>
-                    <th scope="col">NUMERO ORDINE</th>
-                    <th scope="col">PREZZO TOTALE</th>
-                    <th scope="col">CLIENTE</th>
-                    <th scope="col" class="hide-on-mobile">TELEFONO</th>
-                    <th scope="col" class="hide-on-mobile">INDIRIZZO</th>
-                    <th scope="col">AZIONI</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th scope="col">CLIENTE</th>
+                        <th scope="col">PREZZO TOTALE</th>
+                        <th scope="col" class="hide-on-mobile">DATA</th>
+                        <th scope="col" class="hide-on-mobile">INFO</th>
+                    </tr>
+                </thead>
 
             <tbody>
                 @forelse ($orders as $singleOrder)
@@ -30,19 +28,14 @@
                     <td >{{$singleOrder->id}}</td>
                     <td >{{$singleOrder->total_price}}€</td>
                     <td >{{$singleOrder->name}}</td>
-                    <td class="hide-on-mobile">{{$singleOrder->phone}}</td>
-                    <td class="hide-on-mobile">{{$singleOrder->address}}</td>
+
 
 
                     <td>
                         <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#modal1-{{ $singleOrder->id }}">
                             <i class="fa-solid fa-circle-info"></i>
                         </button>
-                   
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{ $singleOrder->id }}">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </td>
+            
                 </tr>
     
                 <!-- Modale delete -->
@@ -115,11 +108,11 @@
         </table>
     </div>
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center p-3">
          {{$orders->links('pagination::bootstrap-4')}}
     </div>
 
-</div>
+    </div>
 
 
 
