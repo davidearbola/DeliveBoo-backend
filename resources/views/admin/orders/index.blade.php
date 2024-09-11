@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('style')
-@vite('resources/scss/productIndex.scss')
+    @vite('resources/scss/productIndex.scss')
 @endsection
 
 @section('content')
@@ -13,16 +13,14 @@
     <div class="table-responsive rounded">
         <table class="table table-success text-center align-middle mb-0">
 
-            <thead>
-                <tr>
-                    <th scope="col">NUMERO ORDINE</th>
-                    <th scope="col">PREZZO TOTALE</th>
-                    <th scope="col">CLIENTE</th>
-                    <th scope="col" class="hide-on-mobile">TELEFONO</th>
-                    <th scope="col" class="hide-on-mobile">INDIRIZZO</th>
-                    <th scope="col">AZIONI</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th scope="col">CLIENTE</th>
+                        <th scope="col">PREZZO TOTALE</th>
+                        <th scope="col" class="hide-on-mobile">DATA</th>
+                        <th scope="col" class="hide-on-mobile">INFO</th>
+                    </tr>
+                </thead>
 
             <tbody>
                 @forelse ($orders as $singleOrder)
@@ -119,7 +117,7 @@
          {{$orders->links('pagination::bootstrap-4')}}
     </div>
 
-</div>
+    </div>
 
 
 
