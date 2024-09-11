@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController; //<---- Import del controlle
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\RestaurantsController;
+use App\Http\Controllers\Admin\StatsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::middleware(['auth'])
         Route::resource('products', ProductsController::class);
         Route::resource('restaurants', RestaurantsController::class);
         Route::resource('orders', OrderController::class);
+        Route::resource('stats', StatsController::class);
     });
 
 require __DIR__ . '/auth.php';

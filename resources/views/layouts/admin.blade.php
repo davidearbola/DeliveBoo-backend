@@ -70,6 +70,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.stats.index' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.stats.index') }}">
+                            <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> Statistiche
+                        </a>
+                    </li>
+
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
