@@ -28,8 +28,8 @@
                     <td >{{$singleOrder->id}}</td>
                     <td >{{$singleOrder->total_price}}€</td>
                     <td >{{$singleOrder->name}}</td>
-                    <td class="hide-on-mobile">{{$singleOrder->phone}}</td>
-                    <td class="hide-on-mobile">{{$singleOrder->address}}</td>
+                    {{-- <td class="hide-on-mobile">{{$singleOrder->phone}}</td> --}}
+                    {{-- <td class="hide-on-mobile">{{$singleOrder->address}}</td> --}}
 
 
                     <td>
