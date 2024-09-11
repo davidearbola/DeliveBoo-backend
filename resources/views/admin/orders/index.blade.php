@@ -28,19 +28,14 @@
                     <td >{{$singleOrder->id}}</td>
                     <td >{{$singleOrder->total_price}}€</td>
                     <td >{{$singleOrder->name}}</td>
-                    {{-- <td class="hide-on-mobile">{{$singleOrder->phone}}</td> --}}
-                    {{-- <td class="hide-on-mobile">{{$singleOrder->address}}</td> --}}
+
 
 
                     <td>
                         <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#modal1-{{ $singleOrder->id }}">
                             <i class="fa-solid fa-circle-info"></i>
                         </button>
-                   
-                        {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{ $singleOrder->id }}">
-                            <i class="fa-solid fa-trash"></i>
-                        </button> --}}
-                    </td>
+            
                 </tr>
     
                 <!-- Modale delete -->
