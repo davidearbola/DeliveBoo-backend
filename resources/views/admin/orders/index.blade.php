@@ -4,14 +4,14 @@
 @endsection
 
 @section('content')
-<div style="max-width: 1400px">
+<div style="max-width: 1400px" class="mx-auto">
     <h1 class="text-center">LISTA ORDINI</h1>
     <p class="ps-2">Totale ordini: {{ count($totalOrders) }}</p>
 
 
 
-    <div class="table-responsive">
-        <table class="table table-success text-center align-middle">
+    <div class="table-responsive rounded">
+        <table class="table table-success text-center align-middle mb-0">
 
             <thead>
                 <tr>
@@ -39,9 +39,9 @@
                             <i class="fa-solid fa-circle-info"></i>
                         </button>
                    
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{ $singleOrder->id }}">
+                        {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-{{ $singleOrder->id }}">
                             <i class="fa-solid fa-trash"></i>
-                        </button>
+                        </button> --}}
                     </td>
                 </tr>
     
@@ -115,7 +115,7 @@
         </table>
     </div>
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center p-3">
          {{$orders->links('pagination::bootstrap-4')}}
     </div>
 

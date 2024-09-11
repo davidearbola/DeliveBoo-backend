@@ -4,9 +4,9 @@
 @endsection
 
 @section('content')
-<div style="max-width: 1400px">
+<div style="max-width: 1400px" class="mx-auto ">
 
-    <div class="row align-items-center justify-content-between px-3">      
+    <div class="row align-items-center justify-content-between px-3 ">      
         <p class="col-auto m-0">Totale prodotti: {{ count($total_products) }}</p>
         <h1 class="col-auto my-3 text-center">LISTA PRODOTTI</h1>
         <a class="col-auto btn btn-success" href="{{route("admin.products.create")}}">Crea Prodotto</a>
@@ -14,8 +14,8 @@
     </div>
 
 
-    <div class="table-responsive">
-        <table class="table table-success text-center align-middle">
+    <div class="table-responsive rounded-3">
+        <table class="table table-success text-center align-middle mb-0">
 
             <thead>
                 <tr>
@@ -71,7 +71,7 @@
                 </tr>
     
                 <!-- Modale -->
-                <div class="modal fade" id="modal-{{ $singleProduct->id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitle-{{ $singleProduct->id }}" aria-hidden="true">
+                <div class="modal fade " id="modal-{{ $singleProduct->id }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitle-{{ $singleProduct->id }}" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -110,7 +110,7 @@
         </table>
     </div>
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center p-3">
          {{$products->links('pagination::bootstrap-4')}}
     </div>
 
