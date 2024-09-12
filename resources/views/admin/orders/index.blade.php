@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <div style="max-width: 1400px" class="mx-auto">
+    <div style="max-width: 1400px" class="mx-auto container">
         <h1 class="text-center">LISTA ORDINI</h1>
         <p class="ps-2">Totale ordini: {{ count($totalOrders) }}</p>
 

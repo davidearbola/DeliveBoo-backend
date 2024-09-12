@@ -1,18 +1,17 @@
-.wrapper{
+.wrapper {
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
     background-image: url(/public/images/004-desktop.jpg);
-    background-size: cover  ;
+    background-size: cover;
 }
 
-.my_cardBody{
+.my_cardBody {
     background-color: #30443f;
 }
 
-.my_cardDescription{
+.my_cardDescription {
     overflow: auto;
     max-width: 90%;
     height: 50%;
 }
+

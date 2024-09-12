@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,23 +26,28 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Usando Vite -->
-    @vite(['resources/js/app.js'])
+    {{-- @vite([ 'resources/scss/adminIndex.scss']) --}}
+    @vite(['resources/js/app.js', 'resources/scss/adminIndex.scss'])
     @yield('style')
+
+
+
 </head>
 
 <body>
     <div id="app">
 
-        <div class="container-fluid vh-100">
+        <div class="container-fluid vh-100 side-menu">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
-                    <div class="position-sticky pt-3">
+                <nav id="sidebarMenu" class=" col-lg-1 col-xl-2  d-lg-block bg-dark navbar-dark sidebar collapse">
+                    <div class="position-sticky pt-3 d-flex flex-column justify-content-between  menu-container">
                         <ul class="nav flex-column">
 
                             <li>
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
                                     href="http://localhost:5173">
-                                    <i class="fa-solid fa-house fa-lg fa-fw"></i> Home
+                                    <i class="fa-solid fa-house fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">Home</span>
                                 </a>
                             </li>
 
@@ -49,56 +55,140 @@
                             <li>
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.index') }}">
-                                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Il tuo Ristorante
+                                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">Il tuo Ristorante</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.orders.index') }}">
-                                    <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i> Ordini
+                                    <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">Ordini</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.products.index') }}">
-                                    <i class="fa-solid fa-burger fa-lg fa-fw"></i> Menù del ristorante
+                                    <i class="fa-solid fa-burger fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">Menù del ristorante</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.products.create') }}">
-                                    <i class="fa-solid fa-plus fa-lg fa-fw"></i> Aggiungi un piatto
+                                    <i class="fa-solid fa-plus fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">Aggiungi un piatto</span>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.stats.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.stats.index') }}">
-                                    <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> Statistiche
+                                    <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">Statistiche</span>
                                 </a>
                             </li>
 
+                            {{-- <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">{{ __('Logout') }}</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li> --}}
+
+                        </ul>
+
+                        <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> {{ __('Logout') }}
+                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">{{ __('Logout') }}</span>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </li>
-
                         </ul>
 
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 p-0">
+                <main class=" col-lg-11  col-xl-10  p-0 h-100">
                     @yield('content')
                 </main>
+
+
+                {{-- poooooooooooooooooooooooooooooooooooooooo --}}
+                <div class="row p-0 m-0">
+                    <ul class="navbar-bottom justify-content-around  col-12 d-lg-none d-flex ">
+                        <li >
+                            {{-- <a clbot_item ass="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}" --}}
+                            <a class="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
+                                href="http://localhost:5173">
+                                <i class="fa-solid fa-house fa-lg fa-fw"></i>
+                            </a>
+                        </li>
+
+
+                        <li >
+                            <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
+                                href="{{ route('admin.restaurants.index') }}">
+                                <i class="fa-solid fa-utensils fa-lg fa-fw"></i> 
+                            </a>
+                        </li>
+
+                        <li >
+                            <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
+                                href="{{ route('admin.orders.index') }}">
+                                <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i>
+                            </a>
+                        </li>
+
+                        <li >
+                            <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.products.index' ? 'bg-secondary' : '' }}"
+                                href="{{ route('admin.products.index') }}">
+                                <i class="fa-solid fa-burger fa-lg fa-fw"></i> 
+                            </a>
+                        </li>
+
+                        <li >
+                            <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.products.create' ? 'bg-secondary' : '' }}"
+                                href="{{ route('admin.products.create') }}">
+                                <i class="fa-solid fa-plus fa-lg fa-fw"></i>
+                            </a>
+                        </li>
+
+                        <li >
+                            <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.stats.index' ? 'bg-secondary' : '' }}"
+                                href="{{ route('admin.stats.index') }}">
+                                <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> 
+                            </a>
+                        </li>
+                    
+                        <li >
+                            <a class="bot_item nav-link text-white" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i>{{ __('') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+
+
             </div>
         </div>
 

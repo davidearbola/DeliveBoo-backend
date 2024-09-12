@@ -1,0 +1,28 @@
+li:hover {
+    background-color: rgba(112, 121, 129, 0.438) !important;
+    transition: .4s;
+}
+
+#sidebarMenu{
+    height: 100%;
+}
+
+.menu-container{
+    height: 100%;
+}
+
+.navbar-bottom{
+    background-color: #30443f;
+    margin: 0!important;
+    padding: 1.4rem;
+    max-height: 8vh;
+}
+
+.navbar-bottom li{
+    list-style-type: none;
+}
+
+.navbar-bottom i{
+    margin: 1rem;
+}
+
