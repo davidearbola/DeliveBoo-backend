@@ -5,19 +5,40 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class StatsController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('products')->orderByDesc('id')->paginate(7);
+        $user = Auth::user();
+
         $totalOrders = Order::all();
 
-        
-        $set = Order::whereMonth('created_at', '=', '09')->get();
-        $totalPriceSett = $set->sum('total_price');
-        
+        $earliestOrder = Order::orderBy('created_at', 'asc')->first();
+        $mesiNumero = [];
 
-        return view('admin.stats.index', compact('orders', 'totalOrders','totalPriceSett'));
+        $earliestMonth = Carbon::parse($earliestOrder->created_at)->format('m');
+        $earliestYear = Carbon::parse($earliestOrder->created_at)->format('Y');
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+
+        for ($year = $earliestYear; $year <= $currentYear; $year++) {
+            $startMonth = ($year == $earliestYear) ? $earliestMonth : 1;
+            $endMonth = ($year == $currentYear) ? $currentMonth : 12;
+            for ($month = $startMonth; $month <= $endMonth; $month++) {
+                $mesiNumero[] = str_pad($month, 2, '0', STR_PAD_LEFT);
+            }
+        }
+
+        $revenueByMonth = [];
+        foreach ($mesiNumero as $month) {
+            $ordersInMonth = Order::whereMonth('created_at', '=', $month)->get();
+            $totalRevenueInMonth = $ordersInMonth->sum('total_price');
+            $revenueByMonth[$month] = $totalRevenueInMonth;
+        }
+        
+        return view('admin.stats.index', compact('totalOrders', 'revenueByMonth', 'mesiNumero'));
     }
 }
