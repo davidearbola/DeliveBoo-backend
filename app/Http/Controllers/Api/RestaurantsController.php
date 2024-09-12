@@ -38,9 +38,9 @@ class RestaurantsController extends Controller
     }
 
     // fai validazione
-    public function show(string $restaurants_id)
+    public function show(string $slug)
     {
-        $restaurant = Restaurant::where('id', $restaurants_id)->with(['user', 'categories'])->get();
+        $restaurant = Restaurant::where('slug', $slug)->with(['user', 'categories'])->get();
 
         return response()->json([
             'restaurant' => $restaurant,

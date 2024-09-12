@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -48,6 +49,7 @@ class RegisteredUserController extends Controller
             // Creazione ristorante
             $data = $restaurantRequest->validated();
             $data['user_id'] = $user->id;
+            $data['slug'] = Str::slug($data->name, '-');
 
             if ($restaurantRequest->hasFile('image_path')) {
                 $image_path = $restaurantRequest->file('image_path')->store('uploads', 'public');
