@@ -26,10 +26,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('restaurants', [RestaurantsController::class, 'index']);
-Route::get('restaurants/{restaurants_id}', [RestaurantsController::class, 'show']);
+Route::get('restaurants/{restaurant:slug}', [RestaurantsController::class, 'show']);
 
-Route::get('restaurants/{restaurants_id}/products', [ProductsController::class, 'index']);
-Route::get('restaurants/{restaurants_id}/products/{products_id}', [ProductsController::class, 'show']);
+Route::get('restaurants/{restaurants:id}/products', [ProductsController::class, 'index']);
+Route::get('restaurants/{restaurants:id}/products/{products_id}', [ProductsController::class, 'show']);
 
 Route::get('categories', [CategoriesController::class, 'index']);
 Route::post('/orders', [OrderController::class, 'store']);

@@ -7,6 +7,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/x-icon" href={{ asset('images/DeliveBoo-Photoroom.png') }}>
+
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -18,7 +20,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -27,55 +31,55 @@
 
 <body>
     <div id="app">
-    
+
         <div class="container-fluid vh-100">
             <div class="row h-100">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
 
-                    <li>
-                        <a class="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
-                            href="http://localhost:5173">
-                            <i class="fa-solid fa-house fa-lg fa-fw"></i> Home
-                        </a>
-                    </li>
-        
+                            <li>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
+                                    href="http://localhost:5173">
+                                    <i class="fa-solid fa-house fa-lg fa-fw"></i> Home
+                                </a>
+                            </li>
 
-                    <li>
-                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
-                            href="{{ route('admin.restaurants.index') }}">
-                            <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Il tuo Ristorante
-                        </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
-                            href="{{ route('admin.orders.index') }}">
-                            <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i> Ordini
-                        </a>
-                    </li>
+                            <li>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.restaurants.index') }}">
+                                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i> Il tuo Ristorante
+                                </a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.index' ? 'bg-secondary' : '' }}"
-                            href="{{ route('admin.products.index') }}">
-                            <i class="fa-solid fa-burger fa-lg fa-fw"></i> Menù del ristorante
-                        </a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.orders.index') }}">
+                                    <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i> Ordini
+                                </a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.create' ? 'bg-secondary' : '' }}"
-                            href="{{ route('admin.products.create') }}">
-                            <i class="fa-solid fa-plus fa-lg fa-fw"></i> Aggiungi un piatto
-                        </a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.products.index') }}">
+                                    <i class="fa-solid fa-burger fa-lg fa-fw"></i> Menù del ristorante
+                                </a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.stats.index' ? 'bg-secondary' : '' }}"
-                            href="{{ route('admin.stats.index') }}">
-                            <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> Statistiche
-                        </a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.products.create') }}">
+                                    <i class="fa-solid fa-plus fa-lg fa-fw"></i> Aggiungi un piatto
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.stats.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.stats.index') }}">
+                                    <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> Statistiche
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
