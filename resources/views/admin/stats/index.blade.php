@@ -3,9 +3,14 @@
 
 
 @section('content')
+<div class="container-fluid">
+    <h1 class="text-center">Statistiche del tuo ristorante</h1>
     <div>
         <canvas id="myChart"></canvas>
     </div>
+
+    <h5>Guadagno totale -> € {{$totalIncome}}</h5>
+</div>
 
 
     <script>

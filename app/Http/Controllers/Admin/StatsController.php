@@ -62,6 +62,7 @@ class StatsController extends Controller
             $revenueByMonth[] = $ordersInMonth->sum('total_price');
         }
 
-        return view('admin.stats.index', compact('revenueByMonth', 'mesiNome'));
+        $totalIncome = array_sum($revenueByMonth);
+        return view('admin.stats.index', compact('revenueByMonth', 'mesiNome','totalIncome'));
     }
 }
