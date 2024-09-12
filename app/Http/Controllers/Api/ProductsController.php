@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,7 +22,8 @@ class ProductsController extends Controller
             ], 400); // 400 Bad Request
         }
 
-        $product = Product::where('restaurant_id', $restaurants_id)->get();
+        $product = Product::where('restaurant_id', $restaurants_id)->with('restaurant')->get();
+
         return response()->json([
             'product' => $product,
         ]);

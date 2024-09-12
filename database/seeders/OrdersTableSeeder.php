@@ -2,15 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
+
 
 class OrdersTableSeeder extends Seeder
 {
     public function run()
     {
+        $faker = Faker::create();
         $startDate = Carbon::create(2023, 10, 1);
         $endDate = Carbon::now(); // Data odierna
         $numberOfOrdersPerMonth = 20;
@@ -25,10 +28,10 @@ class OrdersTableSeeder extends Seeder
                 }
 
                 DB::table('orders')->insert([
-                    'name' => Str::random(10),
-                    'email' => Str::random(10) . '@example.com',
-                    'phone' => '1234567890',
-                    'address' => Str::random(20),
+                    'name' => $faker->name,
+                    'email' => $faker->unique()->safeEmail,
+                    'phone' => $faker->phoneNumber,
+                    'address' => $faker->address,
                     'total_price' => rand(100, 500) / 10,
                     'restaurant_id' => $restaurantId,
                     'created_at' => $createdAt->format('Y-m-d H:i:s'),
