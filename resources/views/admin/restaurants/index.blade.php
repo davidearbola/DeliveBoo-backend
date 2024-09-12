@@ -8,7 +8,7 @@
 
 
 @section('content')
-    <div class="wrapper p-4 ">
+    <div class="wrapper p-4 vh-100">
 
         {{-- <div class="row "> --}}
 
@@ -42,16 +42,17 @@
     </div>
 
     <style>
-        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        @media only screen and (min-width: 768px) and (max-width: 1200px) {
             .wrapper {
                 height: 95vh;
+                overflow: auto;
             }
         }
 
         @media only screen and (max-width: 767px) {
             .wrapper {
                 height: 95vh;
-                overflow: scroll;
+                overflow: auto;
             }
         }
     </style>

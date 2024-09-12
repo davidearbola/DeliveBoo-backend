@@ -99,17 +99,6 @@
                                 </a>
                             </li>
 
-                            {{-- <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> <span
-                                        class="d-lg-none d-xl-inline">{{ __('Logout') }}</span>
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li> --}}
-
                         </ul>
 
                         <ul class="nav flex-column">
@@ -133,7 +122,6 @@
                 </main>
 
 
-                {{-- poooooooooooooooooooooooooooooooooooooooo --}}
                 <div class="row p-0 m-0">
                     <ul class="navbar-bottom justify-content-around  col-12 d-lg-none d-flex ">
                         <li>
@@ -205,7 +193,7 @@
 </html>
 
 <style>
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @media only screen and (min-width: 768px) and (max-width: 1200px) {
         .navbar-bottom {
             position: absolute;
             height: 100vh;
