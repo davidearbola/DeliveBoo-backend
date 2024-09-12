@@ -17,8 +17,8 @@
                     <tr>
                         <th scope="col">CLIENTE</th>
                         <th scope="col">PREZZO TOTALE</th>
-                        <th scope="col" class="hide-on-mobile">DATA</th>
-                        <th scope="col" class="hide-on-mobile">INFO</th>
+                        <th scope="col" >DATA</th>
+                        <th scope="col" >INFO</th>
                     </tr>
                 </thead>
 
