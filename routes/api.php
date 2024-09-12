@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CategoriesController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\RestaurantsController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\UserLogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+    // Route::get('/userLogin', [UserLogController::class, 'getLog']);
 });
 
 Route::get('restaurants', [RestaurantsController::class, 'index']);
