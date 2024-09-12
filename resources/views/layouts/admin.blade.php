@@ -136,7 +136,7 @@
                 {{-- poooooooooooooooooooooooooooooooooooooooo --}}
                 <div class="row p-0 m-0">
                     <ul class="navbar-bottom justify-content-around  col-12 d-lg-none d-flex ">
-                        <li >
+                        <li>
                             {{-- <a clbot_item ass="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}" --}}
                             <a class="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
                                 href="http://localhost:5173">
@@ -145,42 +145,42 @@
                         </li>
 
 
-                        <li >
+                        <li>
                             <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
                                 href="{{ route('admin.restaurants.index') }}">
-                                <i class="fa-solid fa-utensils fa-lg fa-fw"></i> 
+                                <i class="fa-solid fa-utensils fa-lg fa-fw"></i>
                             </a>
                         </li>
 
-                        <li >
+                        <li>
                             <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
                                 href="{{ route('admin.orders.index') }}">
                                 <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i>
                             </a>
                         </li>
 
-                        <li >
+                        <li>
                             <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.products.index' ? 'bg-secondary' : '' }}"
                                 href="{{ route('admin.products.index') }}">
-                                <i class="fa-solid fa-burger fa-lg fa-fw"></i> 
+                                <i class="fa-solid fa-burger fa-lg fa-fw"></i>
                             </a>
                         </li>
 
-                        <li >
+                        <li>
                             <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.products.create' ? 'bg-secondary' : '' }}"
                                 href="{{ route('admin.products.create') }}">
                                 <i class="fa-solid fa-plus fa-lg fa-fw"></i>
                             </a>
                         </li>
 
-                        <li >
+                        <li>
                             <a class="bot_item nav-link text-white {{ Route::currentRouteName() == 'admin.stats.index' ? 'bg-secondary' : '' }}"
                                 href="{{ route('admin.stats.index') }}">
-                                <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> 
+                                <i class="fa-solid fa-chart-line fa-lg fa-fw"></i>
                             </a>
                         </li>
-                    
-                        <li >
+
+                        <li>
                             <a class="bot_item nav-link text-white" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i>{{ __('') }}
@@ -203,3 +203,24 @@
 </body>
 
 </html>
+
+<style>
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .navbar-bottom {
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            bottom: 0;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .navbar-bottom {
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            bottom: 0;
+            padding: 1rem;
+        }
+    }
+</style>
