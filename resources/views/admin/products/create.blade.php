@@ -144,6 +144,9 @@
     @vite(['resources/js/create_product.js'])
 
     <style scoped>
+        *{
+            font-family: "Alice", serif;
+        }
         .form-step.active {
             /* display: block; */
         }

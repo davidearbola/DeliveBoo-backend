@@ -68,8 +68,13 @@
     </div>
 
     <style>
+
+        *{
+            font-family: "Alice", serif;
+        }
         .box {
-            background: linear-gradient(90deg, rgba(35, 35, 35, 1) 5%, rgba(26, 130, 93, 1) 50%, rgba(35, 35, 35, 1) 95%);
+            background-color: #fbab7e;
+            background-image: linear-gradient(90deg, #fbab7e 0%, #f7ce68 50%, #fbab7e 100%);
             border-radius: 15px;
             color: white;
         }

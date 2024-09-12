@@ -157,6 +157,10 @@
 
 
     <style scoped>
+
+        *{
+            font-family: "Alice", serif;
+        }
         .form-step.active {
             /* display: block; */
         }
