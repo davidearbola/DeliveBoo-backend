@@ -4,11 +4,11 @@
 @endsection
 
 @section('content')
-    <div style="max-width: 1400px" class="mx-auto ">
+    <div style="max-width: 1400px" class="mx-auto">
 
-        <div class="row align-items-center justify-content-between px-3 ">
-            <p class="col-auto m-0">Totale prodotti: {{ count($total_products) }}</p>
-            <h1 class="col-auto my-3 text-center">LISTA PRODOTTI</h1>
+        <div class="row align-items-center justify-content-between pe-3 ">
+            {{-- <p class="col-auto m-0">Totale prodotti: {{ count($total_products) }}</p> --}}
+            <h1 class="col-auto my-4 text-center">TOTALE PRODOTTI : {{ count($total_products) }}</h1>
             <a class="col-auto btn btn-success" href="{{ route('admin.products.create') }}">Crea Prodotto</a>
 
         </div>
@@ -19,10 +19,9 @@
 
                 <thead>
                     <tr>
-                        <th scope="col" class="text-start">NOME</th>
-                        <th scope="col" class="hide-on-tablet">TIPOLOGIA</th>
-                        <th scope="col" class="hide-on-tablet">PREZZO</th>
                         <th scope="col" class="hide-on-mobile" style="max-width:80px">IMMAGINE</th>
+                        <th scope="col" class="text-center">NOME</th>
+                        <th scope="col" class="hide-on-tablet">PREZZO</th>
                         <th scope="col" class="hide-on-mobile">DISPONIBILITA'</th>
                         <th scope="col">AZIONI</th>
                     </tr>
@@ -31,19 +30,19 @@
                 <tbody>
                     @forelse ($products as $singleProduct)
                         <tr>
-                            <td class="text-start">{{ $singleProduct->name }}</td>
-                            <td class="hide-on-tablet">{{ $singleProduct->type }}</td>
-                            <td class="hide-on-tablet">{{ $singleProduct->price }}€</td>
-
                             <td class="hide-on-mobile" style="max-width:80px">
                                 @if (Str::startsWith($singleProduct->image_path, 'http'))
                                     <img class="w-100" src="{{ $singleProduct->image_path }}"
-                                        style="height: 70px; max-width:60px object-fit: contain;">
+                                        style="height: 90px; max-width:60px object-fit: contain;">
                                 @else
                                     <img class="w-100" src="{{ asset('storage/' . $singleProduct->image_path) }}"
-                                        style="height: 70px; max-width:60px object-fit: contain;">
+                                        style="height: 90px; max-width:60px object-fit: contain;">
                                 @endif
                             </td>
+
+                            <td class="text-center">{{ $singleProduct->name }}</td>
+
+                            <td class="hide-on-tablet">{{ $singleProduct->price }}€</td>
 
                             <td class="hide-on-mobile">
                                 @if ($singleProduct->visible == true)
@@ -54,12 +53,6 @@
                             </td>
 
                             <td>
-                                <button class="btn btn-info me-2 text-white">
-                                    <a href="{{ route('admin.products.show', $singleProduct) }}" class="text-reset">
-                                        <i class="fa-solid fa-circle-info"></i>
-                                    </a>
-                                </button>
-
                                 <button class="btn btn-warning me-2 text-white">
                                     <a href="{{ route('admin.products.edit', $singleProduct) }}" class="text-reset">
                                         <i class="fa-solid fa-pen"></i>
@@ -74,10 +67,10 @@
                         </tr>
 
                         <!-- Modale -->
-                        <div class="modal fade " id="modal-{{ $singleProduct->id }}" tabindex="-1"
-                            data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-                            aria-labelledby="modalTitle-{{ $singleProduct->id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                        <div class="modal fade" id="modal-{{ $singleProduct->id }}" tabindex="-1" data-bs-backdrop="static"
+                            data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitle-{{ $singleProduct->id }}"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
                                 role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">

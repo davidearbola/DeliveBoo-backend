@@ -49,29 +49,22 @@
                 <nav id="sidebarMenu" class=" col-lg-1 col-xl-2  d-lg-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3 d-flex flex-column justify-content-between  menu-container">
                         <ul class="nav flex-column">
-
-                            <li>
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
+                            <div class="text-center">
+                                <a class="w-50 {{ Route::currentRouteName() == 'http://localhost:5173' ? 'bg-secondary' : '' }}"
                                     href="http://localhost:5173">
-                                    <i class="fa-solid fa-house fa-lg fa-fw"></i> <span
-                                        class="d-lg-none d-xl-inline">Home</span>
+                                    <img src="{{ asset('images/DeliveBoo-Photoroom.png') }}" alt=""
+                                        class="w-50 my-4">
                                 </a>
-                            </li>
+                            </div>
 
 
                             <li>
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link
+                                        text-white
+                                        {{ Route::currentRouteName() == 'admin.restaurants.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.index') }}">
                                     <i class="fa-solid fa-utensils fa-lg fa-fw"></i> <span
                                         class="d-lg-none d-xl-inline">Il tuo Ristorante</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.orders.index') }}">
-                                    <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i> <span
-                                        class="d-lg-none d-xl-inline">Ordini</span>
                                 </a>
                             </li>
 
@@ -84,10 +77,10 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.products.create' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.products.create') }}">
-                                    <i class="fa-solid fa-plus fa-lg fa-fw"></i> <span
-                                        class="d-lg-none d-xl-inline">Aggiungi un piatto</span>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.orders.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.orders.index') }}">
+                                    <i class="fa-solid fa-sheet-plastic fa-lg fa-fw"></i> <span
+                                        class="d-lg-none d-xl-inline">Ordini</span>
                                 </a>
                             </li>
 

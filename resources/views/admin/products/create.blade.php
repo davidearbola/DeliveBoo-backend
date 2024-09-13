@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Aggiungi un prodotto al tuo ristorante</div>
+                    <div class="card-header">AGGIUNGI UN PRODOTTO AL TUO RISTORANTE</div>
 
                     <div class="card-body">
                         <form id="updateProductForm" method="POST" action="{{ route('admin.products.store') }}"
@@ -15,8 +15,10 @@
 
                             <!-- Step 1: Product Name -->
                             <div class="form-step active">
+                                <span class=" alert alert-danger p-1 rounded">* Tutti i campi sono
+                                    obbligatori</span>
                                 <div class="form-group mb-3">
-                                    <label for="name">Nome del prodotto</label>
+                                    <label for="name" class="my-2">Nome del prodotto</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
                                         id="name" name="name" value="{{ old('name') }}" required>
                                     <p id="error_name" class="bg-danger text-white rounded m-0 px-1">
@@ -132,7 +134,7 @@
                             </div>
 
                             <!-- Step 7: Submit -->
-                            <button type="submit" class="btn btn-success">Crea prodotto</button>
+                            <button type="submit" class="btn btn-success">SALVA</button>
                         </form>
                     </div>
                 </div>
@@ -144,9 +146,10 @@
     @vite(['resources/js/create_product.js'])
 
     <style scoped>
-        *{
+        * {
             font-family: "Alice", serif;
         }
+
         .form-step.active {
             /* display: block; */
         }
