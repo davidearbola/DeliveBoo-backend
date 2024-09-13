@@ -15,7 +15,7 @@
 
                     <thead>
                         <tr>
-                            <th scope="col">CLIENTE</th>
+                            <th class="lefty" scope="col">CLIENTE</th>
                             <th scope="col">PREZZO TOTALE</th>
                             <th scope="col">DATA</th>
                             <th scope="col">INFO</th>
@@ -25,7 +25,7 @@
                     <tbody>
                         @forelse ($orders as $singleOrder)
                             <tr>
-                                <td>{{ $singleOrder->name }}</td>
+                                <td class="lefty">{{ $singleOrder->name }}</td>
                                 <td>{{ $singleOrder->total_price }}€</td>
                                 <td>{{ $singleOrder->created_at }}</td>
 
@@ -96,6 +96,12 @@
     </div>
 
     <style>
+.lefty{
+    text-align: start;
+    padding: 1rem 0;
+    padding-left:2rem!important;
+}
+
         @media only screen and (min-width: 768px) and (max-width: 1200px) {
             .wrapper {
                 height: 95vh;
