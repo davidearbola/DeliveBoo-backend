@@ -30,15 +30,23 @@
                 <tbody>
                     @forelse ($products as $singleProduct)
                         <tr>
-                            <td class="hide-on-mobile" style="max-width:80px">
+                            <td class="hide-on-mobile img-container">
                                 @if (Str::startsWith($singleProduct->image_path, 'http'))
-                                    <img class="w-100" src="{{ $singleProduct->image_path }}"
-                                        style="height: 90px; max-width:60px object-fit: contain;">
+                                    <img class="w-100"
+                                        src="{{ $singleProduct->image_path }}">
                                 @else
-                                    <img class="w-100" src="{{ asset('storage/' . $singleProduct->image_path) }}"
-                                        style="height: 90px; max-width:60px object-fit: contain;">
+                                    <img class="w-100" src="{{ asset('storage/' . $singleProduct->image_path) }}">
                                 @endif
                             </td>
+                            {{-- <td class="hide-on-mobile img-container" style="max-width:80px">
+                                @if (Str::startsWith($singleProduct->image_path, 'http'))
+                                    <img class="w-100" src="{{ $singleProduct->image_path }}"
+                                        style="height: 90px; width:60px object-fit: contain;">
+                                @else
+                                    <img class="w-100" src="{{ asset('storage/' . $singleProduct->image_path) }}"
+                                        style="height: 90px; width:60px object-fit: contain;">
+                                @endif
+                            </td> --}}
 
                             <td class="text-center">{{ $singleProduct->name }}</td>
 
@@ -116,4 +124,16 @@
         </div>
 
     </div>
+
+    <style scoped>
+        img {
+            height: 90px;
+            object-fit: contain; 
+            object-fit: cover;
+        }
+
+        .img-container {
+            width: 150px;
+        }
+    </style>
 @endsection
