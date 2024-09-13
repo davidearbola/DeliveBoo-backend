@@ -190,6 +190,11 @@ header {
     padding: 2px 10px;
 }
 
+input:hover,
+label:hover {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 992px) {
 
     #my_container {
