@@ -27,7 +27,7 @@
                             <tr>
                                 <td class="lefty">{{ $singleOrder->name }}</td>
                                 <td>{{ $singleOrder->total_price }}€</td>
-                                <td>{{ $singleOrder->created_at }}</td>
+                                <td>{{ $singleOrder->created_at->format('d/m/Y H:i') }}</td>
 
 
 
@@ -66,7 +66,7 @@
                                                     {{ $product->pivot->quantity }}</p>
                                             @endforeach
                                             <p class="mt-3"><span class="fw-bold">Totale pagato :
-                                                </span><span>{{ $singleOrder->total_price }}</span></p>
+                                                </span><span>{{ $singleOrder->total_price }}€</span></p>
                                         </div>
 
                                         <div class="modal-footer">
@@ -96,11 +96,11 @@
     </div>
 
     <style>
-.lefty{
-    text-align: start;
-    padding: 1rem 0;
-    padding-left:2rem!important;
-}
+        .lefty {
+            text-align: start;
+            padding: 1rem 0;
+            padding-left: 2rem !important;
+        }
 
         @media only screen and (min-width: 768px) and (max-width: 1200px) {
             .wrapper {

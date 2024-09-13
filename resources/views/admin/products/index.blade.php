@@ -32,10 +32,9 @@
                         <tr>
                             <td class="hide-on-mobile img-container">
                                 @if (Str::startsWith($singleProduct->image_path, 'http'))
-                                    <img class="w-100"
-                                        src="{{ $singleProduct->image_path }}">
+                                    <img src="{{ $singleProduct->image_path }}">
                                 @else
-                                    <img class="w-100" src="{{ asset('storage/' . $singleProduct->image_path) }}">
+                                    <img src="{{ asset('storage/' . $singleProduct->image_path) }}">
                                 @endif
                             </td>
                             {{-- <td class="hide-on-mobile img-container" style="max-width:80px">
@@ -127,13 +126,11 @@
 
     <style scoped>
         img {
-            height: 90px;
-            object-fit: contain; 
-            object-fit: cover;
+            height: 3rem;
         }
 
-        .img-container {
-            width: 150px;
-        }
+        /* .img-container {
+                            width: 150px;
+                        } */
     </style>
 @endsection

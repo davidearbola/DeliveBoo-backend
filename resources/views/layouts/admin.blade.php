@@ -110,7 +110,7 @@
                     </div>
                 </nav>
 
-                <main class=" col-lg-11  col-xl-10  p-3 h-100">
+                <main class=" col-lg-11  col-xl-10  h-100">
                     @yield('content')
                 </main>
 
