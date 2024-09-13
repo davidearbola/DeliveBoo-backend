@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('products')->orderByDesc('created_at')->paginate(7);
-        $totalOrders = Order::all();
+        $user = Auth::user();
+        $restaurant = $user->restaurant;
+        $orders = Order::where('restaurant_id', $restaurant->id)->with('products')->orderByDesc('created_at')->paginate(7);
+        $totalOrders = Order::where('restaurant_id', $restaurant->id)->get();
         return view('admin.orders.index', compact('orders', 'totalOrders'));
     }
 

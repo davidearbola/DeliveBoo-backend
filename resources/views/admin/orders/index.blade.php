@@ -17,8 +17,8 @@
                     <tr>
                         <th scope="col">CLIENTE</th>
                         <th scope="col">PREZZO TOTALE</th>
-                        <th scope="col" >DATA</th>
-                        <th scope="col" >INFO</th>
+                        <th scope="col">DATA</th>
+                        <th scope="col">INFO</th>
                     </tr>
                 </thead>
 
