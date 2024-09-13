@@ -15,4 +15,9 @@ class Product extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_product')
+            ->withPivot('quantity', 'price'); // Specifica le colonne extra nella tabella pivot
+    }
 }

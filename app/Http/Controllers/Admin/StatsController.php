@@ -5,70 +5,66 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class StatsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         $restaurant = $user->restaurant;
 
-        $earliestOrder = Order::where('restaurant_id', $restaurant->id)->orderBy('created_at', 'asc')->first();
-        if ($earliestOrder) {
-            $mesiNumero = [];
-            $mesiNome = [];
-            $earliestMonth = Carbon::parse($earliestOrder->created_at)->format('m');
-            $earliestYear = Carbon::parse($earliestOrder->created_at)->format('Y');
-            $currentMonth = date('m');
-            $currentYear = date('Y');
+        $years = Order::where('restaurant_id', $restaurant->id)
+            ->selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->pluck('year')
+            ->toArray();
 
-            for ($year = $earliestYear; $year <= $currentYear; $year++) {
-                $startMonth = ($year == $earliestYear) ? $earliestMonth : 1;
-                $endMonth = ($year == $currentYear) ? $currentMonth : 12;
-                for ($month = $startMonth; $month <= $endMonth; $month++) {
-                    $mesiNumero[] = str_pad($month, 2, '0', STR_PAD_LEFT);
-                    if (str_pad($month, 2, '0', STR_PAD_LEFT) == '01') {
-                        $mesiNome[] = 'Gennaio';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '02') {
-                        $mesiNome[] = 'Febbraio';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '03') {
-                        $mesiNome[] = 'Marzo';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '04') {
-                        $mesiNome[] = 'Aprile';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '05') {
-                        $mesiNome[] = 'Maggio';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '06') {
-                        $mesiNome[] = 'Giugno';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '07') {
-                        $mesiNome[] = 'Luglio';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '08') {
-                        $mesiNome[] = 'Agosto';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '09') {
-                        $mesiNome[] = 'Settembre';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '10') {
-                        $mesiNome[] = 'Ottobre';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '11') {
-                        $mesiNome[] = 'Novembre';
-                    } elseif (str_pad($month, 2, '0', STR_PAD_LEFT) == '12') {
-                        $mesiNome[] = 'Dicembre';
-                    }
-                }
-            }
+        $selectedYear = $request->input('year', date('Y'));
 
-            $revenueByMonth = [];
-            foreach ($mesiNumero as $month) {
-                $ordersInMonth = Order::where('restaurant_id', $restaurant->id)->whereMonth('created_at', '=', $month)->get();
-                $revenueByMonth[] = $ordersInMonth->sum('total_price');
-            }
+        $ordersInYear = Order::where('restaurant_id', $restaurant->id)
+            ->whereYear('created_at', $selectedYear)
+            ->get();
 
-            $totalIncome = array_sum($revenueByMonth);
-            $existData = true;
-            return view('admin.stats.index', compact('revenueByMonth', 'mesiNome', 'totalIncome', 'existData'));
-        } else {
-            $existData = false;
-            return view('admin.stats.index', compact('existData'));
+        $mesiNumero = [];
+        $mesiNome = [];
+        for ($month = 1; $month <= 12; $month++) {
+            $mesiNumero[] = str_pad($month, 2, '0', STR_PAD_LEFT);
+            $mesiNome[] = Carbon::create()->month($month)->locale('it')->monthName;
         }
+
+        $revenueByMonth = [];
+        foreach ($mesiNumero as $month) {
+            $ordersInMonth = $ordersInYear->filter(function ($order) use ($month) {
+                return Carbon::parse($order->created_at)->format('m') == $month;
+            });
+            $revenueByMonth[] = $ordersInMonth->sum('total_price');
+        }
+
+        $totalIncome = array_sum($revenueByMonth);
+        $existData = $ordersInYear->isNotEmpty();
+
+        $productsData = Product::whereHas('orders', function ($query) use ($restaurant) {
+            $query->where('orders.restaurant_id', $restaurant->id); // Usa il prefisso 'orders.' per riferirsi alla tabella 'orders'
+        })->withSum(['orders as total_quantity' => function ($query) use ($restaurant) {
+            $query->where('orders.restaurant_id', $restaurant->id);
+        }], 'order_product.quantity')->get();
+
+        // Prepara i dati per il grafico dei prodotti
+        $productNames = $productsData->pluck('name')->toArray();
+        $productQuantities = $productsData->pluck('total_quantity')->toArray();
+
+        return view('admin.stats.index', compact(
+            'revenueByMonth',
+            'mesiNome',
+            'totalIncome',
+            'existData',
+            'years',
+            'selectedYear',
+            'productNames',
+            'productQuantities'
+        ));
     }
 }
