@@ -20,8 +20,8 @@ class ProductsController extends Controller
     {
         $user = Auth::user();
         $restaurant = $user->restaurant;
-        $products = $restaurant->products()->paginate(6);
-        $total_products= $restaurant->products()->get();
+        $products = $restaurant->products()->orderBy('name', 'asc')->paginate(6);
+        $total_products = $restaurant->products()->get();
 
         return view('admin.products.index', compact('products', 'total_products'));
     }
@@ -65,14 +65,14 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $user = Auth::user();
-        $restaurant = $user->restaurant;
-        $product = Product::where('restaurant_id', $restaurant->id)->findOrFail($id);
+    // public function show(string $id)
+    // {
+    //     $user = Auth::user();
+    //     $restaurant = $user->restaurant;
+    //     $product = Product::where('restaurant_id', $restaurant->id)->findOrFail($id);
 
-        return view('admin.products.show', compact('product'));
-    }
+    //     return view('admin.products.show', compact('product'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

@@ -6,8 +6,7 @@
 @section('content')
     <div class="wrapper p-4 vh-100">
         <div style="max-width: 1400px" class="mx-auto container">
-            <h1 class="text-center">LISTA ORDINI</h1>
-            <p class="ps-2">Totale ordini: {{ count($totalOrders) }}</p>
+            <h1 class="text-center my-4">TOTALE ORDINI : {{ count($totalOrders) }}</h1>
 
 
 
@@ -40,47 +39,11 @@
 
                             </tr>
 
-                            <!-- Modale delete -->
-                            <div class="modal fade" id="modal-{{ $singleOrder->id }}" tabindex="-1"
-                                data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-                                aria-labelledby="modalTitle-{{ $singleOrder->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
-                                    role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="modalTitle-{{ $singleOrder->id }}">
-                                                Eliminare l'ordine n*{{ $singleOrder->id }} ?
-                                            </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-
-                                        <div class="modal-body">
-                                            Attenzione, non puoi annullare questa operazione
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                Chiudi
-                                            </button>
-                                            <form action="{{ route('admin.orders.destroy', $singleOrder) }}" method="post"
-                                                style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">
-                                                    Conferma
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             {{-- Modale info --}}
                             <div class="modal fade" id="modal1-{{ $singleOrder->id }}" tabindex="-1"
                                 data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
                                 aria-labelledby="modalTitle-{{ $singleOrder->id }}" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md"
                                     role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
