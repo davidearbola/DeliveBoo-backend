@@ -58,7 +58,7 @@ class ProductsController extends Controller
         $newProduct->fill($data);
         $newProduct->save();
 
-        return redirect()->route('admin.products.show', $newProduct->id);
+        return redirect()->route('admin.products.index');
     }
 
 
@@ -119,7 +119,7 @@ class ProductsController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('admin.products.show', $product);
+        return redirect()->route('admin.products.index');
     }
 
     /**
